@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Li Xueli Blog</title>
+  <subtitle>代码、生活和其他。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://lixueli.com/"/>
+  <updated>2021-05-06T20:46:40.165Z</updated>
+  <id>http://lixueli.com/</id>
+  
+  <author>
+    <name>Li Xueli</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lodestone 2.0 全新上线</title>
+    <link href="http://lixueli.com/2020/06/04/lodestone/"/>
+    <id>http://lixueli.com/2020/06/04/lodestone/</id>
+    <published>2020-06-04T12:30:12.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>做了一个炉石传说小工具网站 <a href="https://lodestone.xueli.li/" target="_blank" rel="noopener">Lodestone</a>。</p>
+<a id="more"></a>
+<p><img src="https://user-images.githubusercontent.com/12998118/83734681-e8814780-a681-11ea-8161-e7f44dbb887d.jpg" alt="lodestone"></p>
+<p>全新的 2.0 设计，暗色 UI，包含多个功能：</p>
+<ul>
+<li>竞技场选卡工具</li>
+<li>杰弗里斯的许愿池</li>
+<li>奥秘考试宝典</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;做了一个炉石传说小工具网站 &lt;a href=&quot;https://lodestone.xueli.li/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Lodestone&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React Hooks 速查手册</title>
+    <link href="http://lixueli.com/2020/03/13/react-hooks-cheatsheet/"/>
+    <id>http://lixueli.com/2020/03/13/react-hooks-cheatsheet/</id>
+    <published>2020-03-13T04:14:03.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单直观的 React Hooks 速查手册</p>
+<a id="more"></a>
+<h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><p>使函数组件可以拥有内部的状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(initialState)</span><br><span class="line"></span><br><span class="line">setState(newState)</span><br></pre></td></tr></table></figure>
+<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><p>使函数组件可以在 render 时可以进行一些副作用操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 操作</span></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 清理操作</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, dependencyList) <span class="comment">// dependencyList 为 [] 时，仅在组件挂载和卸载时执行</span></span><br></pre></td></tr></table></figure>
+<h2 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h2><p>使函数组件可以使用 context。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myContext = useContext(MyContext)</span><br></pre></td></tr></table></figure>
+<h2 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h2><p>useState 的替代方案，易于处理逻辑较复杂且包含多个子值的 state。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'TYPE_1'</span>:</span><br><span class="line">      ...</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">'TYPE_2'</span>:</span><br><span class="line">      ...</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">'TYPE_3'</span>:</span><br><span class="line">      ...</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialState)</span><br></pre></td></tr></table></figure>
+<h2 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedCallback = useCallback(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  doSomething(a, b)</span><br><span class="line">&#125;, [a, b])</span><br></pre></td></tr></table></figure>
+<h2 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h2><p>用于创建一个 memoized 值，它仅会在某个依赖项改变时才重新计算 memoized 值，有助于避免在每次渲染时都进行高开销的计算。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedValue = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> computeExpensiveValue(a, b), [a, b])</span><br></pre></td></tr></table></figure>
+<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><p>返回 ref 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ref = useRef(initialValue)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;div ref=&#123;ref&#125;&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a>useImperativeHandle</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
+<h2 id="useLayoutEffect"><a href="#useLayoutEffect" class="headerlink" title="useLayoutEffect"></a>useLayoutEffect</h2><p>使函数组件可以在所有的 DOM 变化后可以进行一些副作用操作。可以使用它来读取 DOM 并触发重渲染。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">useLayoutEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 操作</span></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 清理操作</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, dependencyList) <span class="comment">// dependencyList 为 [] 时，仅在组件挂载和卸载时执行</span></span><br></pre></td></tr></table></figure>
+<h2 id="useDebugValue"><a href="#useDebugValue" class="headerlink" title="useDebugValue"></a>useDebugValue</h2><p>用于在 React 开发者工具中显示 hook 的调试信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFriendStatus</span>(<span class="params">friendID</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [isOnline, setIsOnline] = useState(<span class="literal">null</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在开发者工具中的这个 Hook 旁边显示标签</span></span><br><span class="line">  <span class="comment">// e.g. "FriendStatus: Online"</span></span><br><span class="line">  useDebugValue(isOnline ? <span class="string">'Online'</span> : <span class="string">'Offline'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> isOnline</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://zh-hans.reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hook - React 文档</a></li>
+</ul>
+<h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h2><ul>
+<li><a href="https://github.com/rehooks/awesome-react-hooks" target="_blank" rel="noopener">awesome-react-hooks</a></li>
+<li><a href="https://nikgraf.github.io/react-hooks/" target="_blank" rel="noopener">Collection of React Hooks</a></li>
+<li><a href="https://usehooks.com/" target="_blank" rel="noopener">useHooks</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单直观的 React Hooks 速查手册&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="react" scheme="http://lixueli.com/tags/react/"/>
+    
+      <category term="cheatsheet" scheme="http://lixueli.com/tags/cheatsheet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>优化前端Webpack打包文件体积</title>
+    <link href="http://lixueli.com/2020/01/15/reduce-webpack-bundle-size/"/>
+    <id>http://lixueli.com/2020/01/15/reduce-webpack-bundle-size/</id>
+    <published>2020-01-15T07:00:06.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍了如何有效的减少前端Webpack打包文件的体积，优化网站使用体验。</p>
+<a id="more"></a>
+<p>最近用umi和antd搭了一个Web App，js文件大约2M，体积有点大，打算优化一下。</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/72412676-e25cfe00-37a8-11ea-960c-3dd56f64e203.png" alt="优化之前js文件大约2M"></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>使用<a href="https://github.com/webpack-contrib/webpack-bundle-analyzer" target="_blank" rel="noopener">webpack-bundle-analyzer</a>查看各个包占的体积</p>
+<p>在.umirc.js配置插件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> BundleAnalyzerPlugin = <span class="built_in">require</span>(<span class="string">'umi-webpack-bundle-analyzer'</span>).BundleAnalyzerPlugin</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">chainWebpack(config) &#123;</span><br><span class="line">  process.env.NODE_ENV === <span class="string">'production'</span> &amp;&amp;</span><br><span class="line">  process.env.analyze === <span class="string">'true'</span> &amp;&amp;</span><br><span class="line">  config.merge(&#123;</span><br><span class="line">    plugin: &#123;</span><br><span class="line">      bundleAnalyzer: &#123;</span><br><span class="line">        plugin: BundleAnalyzerPlugin,</span><br><span class="line">        args: [&#123; <span class="attr">analyzerPort</span>: <span class="number">3030</span> &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/12998118/72412674-e25cfe00-37a8-11ea-8bdd-3ef3b7a2a13f.png" alt="使用webpack-bundle-analyzer查看各个包占的体积"></p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="使用Day-js替换moment-js"><a href="#使用Day-js替换moment-js" class="headerlink" title="使用Day.js替换moment.js"></a>使用Day.js替换moment.js</h3><p>Antd会使用到moment.js，从上放图可以看出，左下方moment占有了较大的体积。这里我们轻量的Day.js插件来替换moment.js。Antd提供了一个方便替换的插件<a href="https://github.com/ant-design/antd-dayjs-webpack-plugin" target="_blank" rel="noopener">antd-dayjs-webpack-plugin</a>。</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/72412673-e1c46780-37a8-11ea-9dd5-7f863ba2691d.png" alt="使用Day.js替换moment.js之后"></p>
+<h3 id="减小lodash的体积"><a href="#减小lodash的体积" class="headerlink" title="减小lodash的体积"></a>减小lodash的体积</h3><p>使用时，避免引入整个lodash包：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></span><br><span class="line"><span class="comment">// 替换为</span></span><br><span class="line"><span class="keyword">import</span> _get <span class="keyword">from</span> <span class="string">'lodash/get'</span></span><br></pre></td></tr></table></figure>
+<p>同时可以使用<a href="https://github.com/lodash/lodash-webpack-plugin" target="_blank" rel="noopener">lodash-webpack-plugin</a>插件来进一步减小体积。</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/72412672-e12bd100-37a8-11ea-9c89-1342d552e09c.png" alt="减小lodash体积之后"></p>
+<h3 id="减小Ant-Design-Icon的体积"><a href="#减小Ant-Design-Icon的体积" class="headerlink" title="减小Ant Design Icon的体积"></a>减小Ant Design Icon的体积</h3><p>从上方的分析图可以看，左侧Antd icon文件占了很大一部分体积，因为Antd新版本包含了多个样式很多的icon的svg。</p>
+<p>如果Icon使用的个数有限，可以通过<a href="https://github.com/HeskeyBaozi/reduce-antd-icons-bundle-demo" target="_blank" rel="noopener">临时解决方案</a>来减小打包体积。但如果项目中有配置的icon类型，比如<code>&lt;Icon type={icon} /&gt;</code>这样的写法就不适用了。具体可以参见<a href="https://github.com/ant-design/ant-design/issues/12011" target="_blank" rel="noopener">讨论issue</a>。这个占时不做修改，期待Antd 4.0有更好的解决方案。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>优化后，体积2M→1.6M，减小了20%</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/72412670-e0933a80-37a8-11ea-80cf-a058b3fdf409.png" alt="优化后体积约1.6M"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍了如何有效的减少前端Webpack打包文件的体积，优化网站使用体验。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>令人舒适的构建 Web 应用工具箱</title>
+    <link href="http://lixueli.com/2019/11/23/awesome-toolchain-building-webapps/"/>
+    <id>http://lixueli.com/2019/11/23/awesome-toolchain-building-webapps/</id>
+    <published>2019-11-23T05:51:59.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍了 <a href="https://superpapers.xueli.li/" target="_blank" rel="noopener">https://superpapers.xueli.li/</a> 从构想到设计到开发到上线的一些列用到的工具和技术栈。</p>
+<a id="more"></a>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p><a href="http://superpadsapp.com/" target="_blank" rel="noopener">Super Pads</a> 是个超级有趣的音乐应用，能够让你像 DJ 一样演奏乐曲。为了便于演奏，就需要有一个可以记录乐谱的工具，这便是 <a href="https://superpapers.xueli.li/" target="_blank" rel="noopener">Super Papers</a>。</p>
+<blockquote>
+<p><a href="https://superpapers.xueli.li/" target="_blank" rel="noopener">Super Papers 网站</a><br><a href="https://dribbble.com/shots/7976441-Super-Papers-Web-UI" target="_blank" rel="noopener">Super Papers 设计稿</a><br><a href="https://github.com/mixj93/superpapers" target="_blank" rel="noopener">Super Papers 的 Github</a></p>
+</blockquote>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><h3 id="快速原型"><a href="#快速原型" class="headerlink" title="快速原型"></a>快速原型</h3><p>手画原型非常适合用来绘制简单的草稿原型，iPad上的应用 <a href="https://www.fiftythree.com/" target="_blank" rel="noopener">Paper by 53</a> 也是一个非常好的绘图工具，绘制的效果非常好。</p>
+<h3 id="设计稿"><a href="#设计稿" class="headerlink" title="设计稿"></a>设计稿</h3><p><a href="https://www.sketch.com/" target="_blank" rel="noopener">Sketch</a> 现在我做 UI 设计的首选，必要的功能全面，没有过多复杂的选项，上手快，组件的概念非常适合做 UI 设计。Sketch 的入门教程，推荐一下 <a href="https://www.youtube.com/playlist?list=PLLnpHn493BHE6UIsdKYlS5zu-ZYvx22CS" target="_blank" rel="noopener">LevelUpTuts 的 Sketch App Tutorials</a>。</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/69474514-10534100-0dfd-11ea-942b-2d3c59ba6642.png" alt="Super Papers 的设计稿"></p>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p><a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener">Gatsby</a> 是构建静态网站的首选。Hexo 基于 Markdown 文件构建静态网站，Gatsby 可以使用各种数据来生成静态页面，比如 Super Papers 就是用 json 文件生成的网站。Gatsby 的生态圈非常丰富，国际化，SEO 都很便捷，lighthouse 的跑分也很高。</p>
+<h2 id="上线"><a href="#上线" class="headerlink" title="上线"></a>上线</h2><p><a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a> 是我最爱的部署工具。关联代码库，自动构建，发布，支持自定义域名和 https。比自己通过搭建 Travis CI 来构建发布方便许多。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍了 &lt;a href=&quot;https://superpapers.xueli.li/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://superpapers.xueli.li/&lt;/a&gt; 从构想到设计到开发到上线的一些列用到的工具和技术栈。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>调查获取 helm release 过慢的问题</title>
+    <link href="http://lixueli.com/2019/09/19/fetch-helm-release-slow/"/>
+    <id>http://lixueli.com/2019/09/19/fetch-helm-release-slow/</id>
+    <published>2019-09-19T03:27:21.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近发现并发获取 helm release 时会出现比较高的延迟，决定查了一下原因。</p>
+<a id="more"></a>
+<h2 id="一、过程与进度"><a href="#一、过程与进度" class="headerlink" title="一、过程与进度"></a>一、过程与进度</h2><h3 id="1-压测、查看监控"><a href="#1-压测、查看监控" class="headerlink" title="(1) 压测、查看监控"></a>(1) 压测、查看监控</h3><p>使用 <a href="https://github.com/bojand/ghz" target="_blank" rel="noopener">ghz</a> 进行压测，发现并发为 5 的时候每个请求大约花费 1s 左右，并发为 10 的时候花费 2s。</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/79627176-c468b600-8168-11ea-8f75-745b4bae96f5.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ghz 使用例子</span><br><span class="line">./ghz -proto ./tiller.proto \</span><br><span class="line">-call hapi.services.tiller.ReleaseService.GetReleaseStatus \ -d &apos;&#123;&quot;name&quot;: &quot;original-skunk&quot;&#125;&apos; \</span><br><span class="line">-m &apos;&#123;&quot;x-helm-api-client&quot;: &quot;v2.9.1&quot;&#125;&apos; \</span><br><span class="line">&lt;tiller_pod_ip&gt;:44134</span><br><span class="line"></span><br><span class="line"># 如出现以下问题，可添加 -insecure 选项</span><br><span class="line"># rpc error: code = Unavailable desc = all SubConns are in TransientFailure, latest connection error: connection error: desc = &quot;transport: authentication handshake failed: tls: first record does not look like a TLS handshake&quot;</span><br><span class="line">./ghz -proto ./tiller.proto -insecure -call hapi.services.tiller.ReleaseService.GetReleaseStatus -d &apos;&#123;&quot;name&quot;: &quot;&lt;release_name&gt;&quot;&#125;&apos; -m &apos;&#123;&quot;x-helm-api-client&quot;: &quot;v2.9.1&quot;&#125;&apos; &lt;tiller_pod_ip&gt;:44134</span><br></pre></td></tr></table></figure>
+<p><code>tiller.proto</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;</span><br><span class="line">package hapi.services.tiller; option go_package = &quot;services&quot;;</span><br><span class="line"></span><br><span class="line">// GetReleasesStatus retrieves status information for the specified release.</span><br><span class="line">rpc GetReleaseStatus(GetReleaseStatusRequest) returns (GetReleaseStatusResponse) &#123; &#125;</span><br><span class="line"></span><br><span class="line">// GetReleaseStatusRequest is a request to get the status of a release. message GetReleaseStatusRequest &#123;</span><br><span class="line">  // Name is the name of the release</span><br><span class="line">  string name = 1;</span><br><span class="line">  // Version is the version of the release</span><br><span class="line">  int32 version = 2;</span><br><span class="line">&#125;</span><br><span class="line">// GetReleaseStatusResponse is the response indicating the status of the named release. message GetReleaseStatusResponse &#123;</span><br><span class="line">// Name is the name of the release. string name = 1;</span><br><span class="line">// // Info contains information about the release. // hapi.release.Info info = 2;</span><br><span class="line">  // Namespace the release was released into</span><br><span class="line">  string namespace = 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-为-tiller-开启-trace"><a href="#2-为-tiller-开启-trace" class="headerlink" title="(2) 为 tiller 开启 trace"></a>(2) 为 tiller 开启 trace</h3><p>可以通过 tiller 支持的 –trace 参数，为 tiller 开启 grpc trace，由于 trace 的限制，只支持 local 的请求。</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/79627272-68eaf800-8169-11ea-9da5-45f1c9a0b2ba.png" alt="tiller日志"></p>
+<p>查看日志显示请求大部分时候都花在处理上了，接下来打算增加 tiller 的日志。</p>
+<h3 id="3-增加-requestId-和-log-为日志增加时间戳"><a href="#3-增加-requestId-和-log-为日志增加时间戳" class="headerlink" title="(3) 增加 requestId 和 log 为日志增加时间戳:"></a>(3) 增加 requestId 和 log 为日志增加时间戳:</h3><p>增加 <code>requestId:github.com/mercari/go-grpc-interceptor/xrequestid</code></p>
+<p><img src="https://user-images.githubusercontent.com/12998118/79627192-dfd3c100-8168-11ea-807f-7980294fb07d.png" alt></p>
+<h2 id="二、结果"><a href="#二、结果" class="headerlink" title="二、结果"></a>二、结果</h2><p>跟踪代码后发现获取 k8s 资源时会进入 tryThrottle，是由于 tiller 的 k8s client 使用了默认的 qbs(5) 和 brust(10)，现在调整为 1e6，效果明显。</p>
+<p>同样的并发为 5 总共 50 个请求:</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/79627196-e82bfc00-8168-11ea-8cc4-512a7a434960.png" alt="改进之后的压测数据"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近发现并发获取 helm release 时会出现比较高的延迟，决定查了一下原因。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="k8s" scheme="http://lixueli.com/tags/k8s/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的ffmpeg常用命令</title>
+    <link href="http://lixueli.com/2019/05/21/ffmpeg-commands/"/>
+    <id>http://lixueli.com/2019/05/21/ffmpeg-commands/</id>
+    <published>2019-05-21T06:00:24.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的ffmpeg，ffprobe常用命令</p>
+<a id="more"></a>
+<h2 id="查看视频信息"><a href="#查看视频信息" class="headerlink" title="查看视频信息"></a>查看视频信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe video.mp4</span><br></pre></td></tr></table></figure>
+<p>输出含义：</p>
+<ul>
+<li>tbn = the time base in AVStream that has come from the container</li>
+<li>tbc = the time base in AVCodecContext for the codec used for a particular stream</li>
+<li>tbr = tbr is guessed from the video stream and is the value users want to see when they look for the video frame rate</li>
+</ul>
+<p><a href="http://www.ffmpeg-archive.org/What-does-the-output-of-ffmpeg-mean-tbr-tbn-tbc-etc-td941538.html" target="_blank" rel="noopener">FFmpeg-users - What does the output of ffmpeg mean? tbr tbn tbc etc?</a></p>
+<h2 id="剪辑"><a href="#剪辑" class="headerlink" title="剪辑"></a>剪辑</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 0:0:4.000 -t 0:2:00 -i input.mp4 -vcodec copy -acodec copy out.mp4 #不重新编码</span><br><span class="line">ffmpeg -ss 0:0:4.000 -t 0:2:00 -i input.mp4 -vcodec h264 -acodec aac out.mp4 #重新编码</span><br></pre></td></tr></table></figure>
+<h2 id="指定间隔截图"><a href="#指定间隔截图" class="headerlink" title="指定间隔截图"></a>指定间隔截图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:00:10.000 -i sense8.S01E03.start.mp4  -vf fps=fps=10 ../screenshots/screen-%03d.jpg</span><br><span class="line"># fps 后数值越大，截图越多</span><br></pre></td></tr></table></figure>
+<h2 id="左右拼接"><a href="#左右拼接" class="headerlink" title="左右拼接"></a>左右拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i left.mp4 -i right.mp4 -filter_complex \</span><br><span class="line">&quot;[0:v:0]pad=iw*2:ih[bg]; [bg][1:v:0]overlay=w&quot; output.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i &quot;concat:input1.flv|input2.flv|input3.flv&quot; -c copy output.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="ffmpeg-压制带字幕视频"><a href="#ffmpeg-压制带字幕视频" class="headerlink" title="ffmpeg 压制带字幕视频"></a>ffmpeg 压制带字幕视频</h2><h3 id="1280-640"><a href="#1280-640" class="headerlink" title="1280*640"></a>1280*640</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:0 -map 0:1 -c:a aac -ab 192k -strict -2 -async 1 -c:v libx264 -crf 23 -r 25 -s 1280x640 -aspect 2:1 -pix_fmt yuv420p -partitions partb8x8+partp4x4+partp8x8+parti8x8 -b-pyramid 1 -weightb 1 -8x8dct 1 -fast-pskip 1 -direct-pred 1 -coder ac -trellis 1 -me_method hex -subq 6 -me_range 16 -bf 3 -b_strategy 1 -refs 3 -flags +loop -sws_flags fast_bilinear -sc_threshold 40 -keyint_min 25 -g 50 -qmin 3 -qmax 51 -qdiff 4 -metadata creation_time=now -vf subtitles=&quot;sub.ass&quot;:charenc=utf-8 -sn -y output.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="1280-640-gt-1280-720-加黑边"><a href="#1280-640-gt-1280-720-加黑边" class="headerlink" title="1280*640 -&gt; 1280*720 加黑边"></a>1280*640 -&gt; 1280*720 加黑边</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mkv -map 0:0 -map 0:1 -c:a aac -ab 320k -strict -2 -async 1 -c:v libx264 -crf 20 -r 24000/1001 -s 1280x720 -aspect 2:1 -pix_fmt yuv420p -partitions partb8x8+partp4x4+partp8x8+parti8x8 -b-pyramid 1 -weightb 1 -8x8dct 1 -fast-pskip 1 -direct-pred 1 -coder ac -trellis 1 -me_method hex -subq 6 -me_range 16 -bf 3 -b_strategy 1 -refs 3 -flags +loop -sws_flags fast_bilinear -sc_threshold 40 -keyint_min 24 -g 48 -qmin 3 -qmax 51 -qdiff 4 -threads 1 -metadata creation_time=now -vf scale=iw*1:ih,&quot;pad=max(iw\,ih*(16/9)):ow/(16/9):(ow-iw)/2:(oh-ih)/2&quot; -sn -aspect 16:9 -y output.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="1920-1080-H265-gt-H264"><a href="#1920-1080-H265-gt-H264" class="headerlink" title="1920*1080 H265 -&gt; H264"></a>1920*1080 H265 -&gt; H264</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -map 0:0 -map 0:1 -c:a aac -ab 192k -strict -2 -async 1 -c:v libx264 -crf 20 -r 24 -s 1920x1080 -aspect 16:9 -pix_fmt yuv420p -partitions partb8x8+partp4x4+partp8x8+parti8x8 -b-pyramid 1 -weightb 1 -8x8dct 1 -fast-pskip 1 -direct-pred 1 -coder ac -trellis 1 -me_method hex -subq 6 -me_range 16 -bf 3 -b_strategy 1 -refs 3 -flags +loop -sws_flags fast_bilinear -sc_threshold 40 -keyint_min 24 -g 48 -qmin 3 -qmax 51 -qdiff 4 -threads 1 -metadata creation_time=now -sn -y output.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="视频加封面图片"><a href="#视频加封面图片" class="headerlink" title="视频加封面图片"></a>视频加封面图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i INPUT.mp4 -i IMAGE.png -acodec copy -vcodec copy -map 0 -map 1:0 OUTPUT.mp4</span><br><span class="line">ffmpeg -i video.mp4 -i image.png -map 0 -map 1 -c copy -c:v:1 png -disposition:v:1 attached_pic out.mp4</span><br><span class="line"># best</span><br><span class="line">ffmpeg -i &lt;video.mp4&gt; -i &lt;cover.jpg&gt; -map 1 -map 0 -c copy -disposition:0 attached_pic out.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="flac-转-mp3"><a href="#flac-转-mp3" class="headerlink" title="flac 转 mp3"></a>flac 转 mp3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.flac -ab 320k -map_metadata 0 -id3v2_version 3 output.mp3</span><br></pre></td></tr></table></figure>
+<h2 id="去片头片尾"><a href="#去片头片尾" class="headerlink" title="去片头片尾"></a>去片头片尾</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 30 -i test.mp4 -map 0:0 -map 0:1 -c:a aac -ab 96k -strict -2 -async 1 -c:v libx264 -b:v 1414k -maxrate 2828k -bufsize 2828k -r 24 -s 1280x720 -aspect 1280:720 -pix_fmt yuv420p -partitions partb8x8+partp4x4+partp8x8+parti8x8 -b-pyramid 1 -weightb 1 -8x8dct 1 -fast-pskip 1 -direct-pred 1 -coder ac -trellis 1 -me_method hex -subq 6 -me_range 16 -bf 3 -b_strategy 1 -refs 3 -flags +loop -sws_flags fast_bilinear -sc_threshold 40 -keyint_min 24 -g 48 -qmin 3 -qmax 51 -threads 1 -metadata creation_time=now -sn -t 1034 -y test_0.mp4</span><br></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我的ffmpeg，ffprobe常用命令&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git commit 合并</title>
+    <link href="http://lixueli.com/2018/10/09/merge-git-commits/"/>
+    <id>http://lixueli.com/2018/10/09/merge-git-commits/</id>
+    <published>2018-10-09T02:10:17.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何将多个 git commit 合并为一个？遇到冲突时怎么办？</p>
+<a id="more"></a>
+<h2 id="常用方案"><a href="#常用方案" class="headerlink" title="常用方案"></a>常用方案</h2><p>通常只需使用 rebase 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 合并最近的三个 commit</span><br><span class="line">$ git rebase -i HEAD~12</span><br></pre></td></tr></table></figure>
+<h2 id="终极方案"><a href="#终极方案" class="headerlink" title="终极方案"></a>终极方案</h2><p>如果想要合并的 commit 中有 merge 操作，rebase 是可能会出现冲突，最强解决方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git diff --binary master...feature &gt; ~/feature.diff</span><br><span class="line">$ wc -l ~/feature.diff # 查看 diff 行数</span><br><span class="line">$ git checkout feature-new</span><br><span class="line">$ git apply ~/feature.diff</span><br><span class="line"># 此时 feature-new 分支只有一个 commit，修改的内容与 feature 分支一致</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如何将多个 git commit 合并为一个？遇到冲突时怎么办？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="git" scheme="http://lixueli.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>注册美区 Apple ID 账号</title>
+    <link href="http://lixueli.com/2018/06/10/how-to-register-a-us-apple-id/"/>
+    <id>http://lixueli.com/2018/06/10/how-to-register-a-us-apple-id/</id>
+    <published>2018-06-10T09:26:52.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<ol>
+<li>浏览器打开 <a href="https://appleid.apple.com/account#!&amp;page=create，页面往下滑，点击右下角的『选择国家或地区』,然后选择美国" target="_blank" rel="noopener">https://appleid.apple.com/account#!&amp;page=create，页面往下滑，点击右下角的『选择国家或地区』,然后选择美国</a></li>
+<li>表单中填写并牢记自己的『邮箱』、『密码』、『三个密保问题』。姓名和生日等信息可以通过美国人口信息生成器（搜索引擎搜一下）生成，后面会大量需要身份信息。</li>
+<li>去前面填写邮箱收一个验证码</li>
+<li>『Payment &amp; Shipping』 -&gt; 『Add Payment Method…』。一般只下载免费 App 的话，PAYMENT METHOD 选择 None 即可。地址等信息按照前面生成器生成的填写即可，完成之后点击右侧的『Save』。</li>
+<li>在 Apple Store 登录之后会显示这个 ID 从未使用过 Apple Store，所以需要同意一个条款，然后一直 Next，最后看到『Apple ID Completed』点击『Continue』等一会儿即可。</li>
+<li>再打开 Apple Store，某些消失的 App 就出现了，比如 Slack、Skype、Pocket…</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;浏览器打开 &lt;a href=&quot;https://appleid.apple.com/account#!&amp;amp;page=create，页面往下滑，点击右下角的『选择国家或地区』,然后选择美国&quot; target=&quot;_blank&quot; 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何制作 kubectl 插件</title>
+    <link href="http://lixueli.com/2018/02/12/how-to-make-kubectl-plugin/"/>
+    <id>http://lixueli.com/2018/02/12/how-to-make-kubectl-plugin/</id>
+    <published>2018-02-12T07:31:34.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文介绍如何制作一个简单的 kubectl 插件来扩展和定制 kubectl 的功能。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>kubectl 是 Kubernetes 的命令行工具，管理和操作 Kubernetes 集群的必备工具。在 kubectl 1.8 版本及以后提供了官方对插件的支持。kubectl 插件可以扩展、定制 kubectl，为 kubectl 添加新的子命令。</p>
+<h2 id="编写一个最简单的-kubectl-插件"><a href="#编写一个最简单的-kubectl-插件" class="headerlink" title="编写一个最简单的 kubectl 插件"></a>编写一个最简单的 kubectl 插件</h2><p>kubectl 插件其实就是一系列文件的集合，插件至少要包含一个描述性的文件：<code>plugin.yaml</code>，还可以包含二进制文件、脚本、资源文件等。这些文件需要放在 kubectl 插件的指定的路径中，按照寻找插件的顺序，这些路径为：</p>
+<ul>
+<li>如果指定了 <code>${KUBECTL_PLUGINS_PATH}</code>，则不会继续寻找其他的目录。</li>
+<li><code>${XDG_DATA_DIRS}/kubectl/plugins</code></li>
+<li><code>~/.kube/plugins</code></li>
+</ul>
+<p>最简单的插件只需要一个 <code>plugin.yaml</code> 即可，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">"hello"</span></span><br><span class="line"><span class="attr">shortDesc:</span> <span class="string">"I say hello!"</span></span><br><span class="line"><span class="attr">command:</span> <span class="string">"echo Hello plugins!"</span></span><br></pre></td></tr></table></figure>
+<p>这个例子中定义了一个名为 <code>hello</code> 的 kubernetes 插件，并会打印 <code>Hello plugins!</code>。</p>
+<p>只需要在 <code>~/.kube/plugins</code> 下建一个名为插件名的文件夹，然后将这个 <code>plugin.yaml</code> 文件放进文件夹，目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/.kube/plugins/</span><br><span class="line">└── hello/</span><br><span class="line">    └──  plugin.yaml</span><br></pre></td></tr></table></figure>
+<p>然后就可通过 <code>kubectl plugins hello</code> 运行插件，还可以通过 <code>Tab</code> 键进行命令的提示。</p>
+<p>具体的例子可以查看<a href="https://github.com/kubernetes/kubernetes/tree/master/pkg/kubectl/plugins/examples/hello" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="编写复杂的插件"><a href="#编写复杂的插件" class="headerlink" title="编写复杂的插件"></a>编写复杂的插件</h2><p>上面简单的例子并没有什么实际作用，我们可以通过任意的二进制文件或脚本代码扩展功能，以下以 python 为例实现了输出 <code>kube-system</code> 下 pod 的个数。</p>
+<p>文件目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/.kube/plugins/</span><br><span class="line">└── podnum</span><br><span class="line">    ├── plugin.yaml</span><br><span class="line">    └── podnum.py</span><br></pre></td></tr></table></figure>
+<p>plugin.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">"podnum"</span></span><br><span class="line"><span class="attr">shortDesc:</span> <span class="string">"podnum shows pods number"</span></span><br><span class="line"><span class="attr">longDesc:</span> <span class="string">&gt;</span></span><br><span class="line">  <span class="string">podnum</span> <span class="string">shows</span> <span class="string">pods</span> <span class="string">number</span> <span class="string">from</span> <span class="string">kube-system.</span></span><br><span class="line"><span class="attr">command:</span> <span class="string">./podnum.py</span></span><br></pre></td></tr></table></figure>
+<p>podnum.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">import</span> commands</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">namespace = <span class="string">"kube-system"</span></span><br><span class="line"></span><br><span class="line">pods_cmd = <span class="string">"kubectl --namespace %s get pods -o json"</span> % namespace</span><br><span class="line">pods_json = commands.getoutput(pods_cmd)</span><br><span class="line">pods = json.loads(pods_json)[<span class="string">"items"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Having %d pod(s) in kube-system"</span> % len(pods)</span><br></pre></td></tr></table></figure>
+<p>运行情况如下：</p>
+<p><img src="https://user-images.githubusercontent.com/12998118/36132761-0020d4e8-10b4-11e8-9c16-994bddf72c65.jpg" alt="运行情况"></p>
+<p><a href="https://github.com/mixj93/kubectl-plugin-overview" target="_blank" rel="noopener">这里</a>有个更加复杂的例子可以参考。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/" target="_blank" rel="noopener">Extend kubectl with plugins</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/tree/master/pkg/kubectl/plugins/examples" target="_blank" rel="noopener">kubectl plugins example</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何制作一个简单的 kubectl 插件来扩展和定制 kubectl 的功能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="k8s" scheme="http://lixueli.com/tags/k8s/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 a 标签的 download 属性实现导出下载</title>
+    <link href="http://lixueli.com/2017/12/15/anchor-download-attribute/"/>
+    <id>http://lixueli.com/2017/12/15/anchor-download-attribute/</id>
+    <published>2017-12-15T05:28:29.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>HTML5 中 <code>a</code> 标签支持一个叫 <code>download</code> 属性，这个属性标识了这个 <code>a</code> 标签的行为时下载文件，而不是跳转。</p>
+<a id="more"></a>
+<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fnn0ugr06jj30za0h976p.jpg" alt="download 属性兼容性"></p>
+<p>如 <a href="https://caniuse.com/#feat=download" target="_blank" rel="noopener">CANIUSE</a> 的数据所示，IE 浏览器都不支持这一特性，Edge 从 13 版本开始支持，Safari 从 10.1 版本开始支持。Firefox 只允许下载同源的文件。</p>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">download</span>=<span class="string">"data.txt"</span> <span class="attr">href</span>=<span class="string">"data:text/txt;charset=utf-8,内容lalallaala"</span>&gt;</span></span><br><span class="line">  下载 TXT</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过以上代码可以将文字以 <code>text/txt</code> 格式，下载为名为 <code>data.txt</code> 的文件。</p>
+<h2 id="下载为-JSON、CSV、TSV-格式"><a href="#下载为-JSON、CSV、TSV-格式" class="headerlink" title="下载为 JSON、CSV、TSV 格式"></a>下载为 JSON、CSV、TSV 格式</h2><p>JSON、CSV 与 TSV 格式是表格数据导出下载的常用格式，在实际开发中会经常遇到。</p>
+<h3 id="JSON-格式"><a href="#JSON-格式" class="headerlink" title="JSON 格式"></a>JSON 格式</h3><p>JSON 格式的下载与 txt 下载类似，将 <code>a</code> 标签的 <code>href</code> 开头设置成 <code>data:text/csv;charset=utf-8,</code> ，拼接上数据的 <code>JSON.stringify</code> 的值即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a download=<span class="string">"data.json"</span> href=<span class="string">"data:application/json;charset=utf-8,&#123;index:10&#125;"</span>&gt;</span><br><span class="line">  下载 <span class="built_in">JSON</span></span><br><span class="line">&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSV-与-TSV-格式"><a href="#CSV-与-TSV-格式" class="headerlink" title="CSV 与 TSV 格式"></a>CSV 与 TSV 格式</h3><p>CSV、TSV 格式首先需要借助 <a href="https://github.com/ricardobeat/TSV" target="_blank" rel="noopener">ricardobeat/TSV</a> 这个库将数据对象转换为 CSV、TSV 格式的字符串，其他步骤与 txt 和 JSON 格式的下载都类似。有一点需要特殊注意，如果内容包含中文字符，需要在 <code>data:text/csv;charset=utf-8,</code> 后面加上 <code>\ufeff</code>，否则会造成中文乱码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;a</span><br><span class="line">  download=<span class="string">"data.json"</span></span><br><span class="line">  href=<span class="string">"data:application/json;charset=utf-8,\ufeff一些内容"</span></span><br><span class="line">&gt;</span><br><span class="line">  下载 CSV</span><br><span class="line">&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="完整示例"><a href="#完整示例" class="headerlink" title="完整示例"></a>完整示例</h3>
+
+<p data-height="309" data-theme-id="0" data-slug-hash="eyLEQL" data-default-tab="result" data-user="mixj93" data-embed-version="2" data-pen-title="Download js object as JSON, CSV, TSV" class="codepen">See the Pen <a href="https://codepen.io/mixj93/pen/eyLEQL/" target="_blank" rel="noopener">Download js object as JSON, CSV, TSV</a> by mixj93 (<a href="https://codepen.io/mixj93" target="_blank" rel="noopener">@mixj93</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2016/04/know-about-html-download-attribute/" target="_blank" rel="noopener">了解 HTML/HTML5 中的 download 属性</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a" target="_blank" rel="noopener">HTML 元素参考 <a> - MDN</a></a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;HTML5 中 &lt;code&gt;a&lt;/code&gt; 标签支持一个叫 &lt;code&gt;download&lt;/code&gt; 属性，这个属性标识了这个 &lt;code&gt;a&lt;/code&gt; 标签的行为时下载文件，而不是跳转。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Ubuntu 上搭建饥荒联机服务器（2017年9月更新）</title>
+    <link href="http://lixueli.com/2017/09/22/build-dst-server-on-ubuntu/"/>
+    <id>http://lixueli.com/2017/09/22/build-dst-server-on-ubuntu/</id>
+    <published>2017-09-22T12:34:50.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>饥荒联机版（Don’t Starve Together）是一款非常有意思的跨平台（甚至包括 Linux）生存类游戏。可是游戏里自建服务器是用某一位玩家的电脑做 server，这样作为 server 的玩家退出了，别的人也不能玩了。所以我们需要一台专门的服务器。网上大多的教程都有些过时，并不能成功搭建起来，所以折腾了一下，出了一个新版的搭建手册。</p>
+<a id="more"></a>
+<h2 id="机器要求"><a href="#机器要求" class="headerlink" title="机器要求"></a>机器要求</h2><p>我这里使用的是 Ubuntu 16.04 64位 的机器。内存需要至少1G，并能以 root 身份登录机器。</p>
+<h2 id="准备服务器环境"><a href="#准备服务器环境" class="headerlink" title="准备服务器环境"></a>准备服务器环境</h2><p>添加i386的构建器，更新，并安装32位依赖库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dpkg --add-architecture i386 <span class="comment"># 添加i386的构建器</span></span><br><span class="line">apt-get update <span class="comment"># 更新 apt-get</span></span><br><span class="line">apt-get install -y lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 screen <span class="comment"># 安装32位依赖库</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装-steamCMD-和-DST"><a href="#安装-steamCMD-和-DST" class="headerlink" title="安装 steamCMD 和 DST"></a>安装 steamCMD 和 DST</h2><p>下载 steamCMD<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir steamcmd <span class="comment"># 在 /root 下创建 steamcmd/ 文件夹</span></span><br><span class="line"><span class="built_in">cd</span> steamcmd <span class="comment"># 进入 sreamcmd/ 文件夹</span></span><br><span class="line">wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvzf steamcmd_linux.tar.gz</span><br><span class="line">rm steamcmd_linux.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>运行 steamcmd</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./steamcmd.sh</span><br></pre></td></tr></table></figure>
+<p>运行 steamcmd 之后，命令提示符会变成 <code>Steam&gt;</code>，这时进入了 steamcmd 的命令交互界面。现在使用 steamCMD 安装 DST</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">login anonymous <span class="comment"># 以匿名身份登录</span></span><br><span class="line">force_install_dir ../dstserver <span class="comment"># 在下建立文件夹安装 DST 服务器</span></span><br><span class="line">app_update 343050 validate <span class="comment"># 安装 DST，成功后会出现 Success! App '343050' fully installed.</span></span><br><span class="line">quit <span class="comment"># 完成后退出</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/dstserver/bin</span><br><span class="line">./dontstarve_dedicated_server_nullrenderer <span class="comment"># 这个命令会出现错误，但会帮助我们生成配置文件</span></span><br></pre></td></tr></table></figure>
+<p>这时我们会发现多了一个目录：<code>~/.klei/DoNotStarveTogether</code>，他的目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">└── Cluster_1</span><br><span class="line">    └── Master</span><br><span class="line">        ├── backup</span><br><span class="line">        │   ├── server_chat_log</span><br><span class="line">        │   └── server_log</span><br><span class="line">        ├── save</span><br><span class="line">        │   ├── boot_modindex</span><br><span class="line">        │   ├── client_temp</span><br><span class="line">        │   ├── mod_config_data</span><br><span class="line">        │   ├── modindex</span><br><span class="line">        │   ├── profile</span><br><span class="line">        │   ├── server_temp</span><br><span class="line">        │   └── session</span><br><span class="line">        ├── server_chat_log.txt</span><br><span class="line">        ├── server.ini</span><br><span class="line">        └── server_log.txt</span><br></pre></td></tr></table></figure>
+<h2 id="配置服务器"><a href="#配置服务器" class="headerlink" title="配置服务器"></a>配置服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.klei/DoNotStarveTogether/Cluster_1/ <span class="comment"># 进入生成配置文件的 Cluster_1/ 文件夹</span></span><br><span class="line">touch cluster_token.txt cluster.ini <span class="comment"># 创建几个需要的配置文件</span></span><br></pre></td></tr></table></figure>
+<p>这时的 Cluster_1/ 目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├── cluster.ini</span><br><span class="line">├── cluster_token.txt</span><br><span class="line">└── Master</span><br><span class="line">    ├── backup</span><br><span class="line">    │   ├── server_chat_log</span><br><span class="line">    │   └── server_log</span><br><span class="line">    ├── save</span><br><span class="line">    │   ├── boot_modindex</span><br><span class="line">    │   ├── client_temp</span><br><span class="line">    │   ├── mod_config_data</span><br><span class="line">    │   ├── modindex</span><br><span class="line">    │   ├── profile</span><br><span class="line">    │   ├── server_temp</span><br><span class="line">    │   └── session</span><br><span class="line">    ├── server_chat_log.txt</span><br><span class="line">    ├── server.ini</span><br><span class="line">    └── server_log.txt</span><br></pre></td></tr></table></figure>
+<p>必须拥有饥荒联机帐号才能架设线上独立服务器。所以我们需要通过自己的饥荒联机版客户端生成 Authentication Token。</p>
+<p>打开你的游戏，点进入游戏主菜单当中，按~键（esc 下面那个键）打开控制台，输入 <code>TheNet:GenerateServerToken()</code>，这会在你的电脑上生成内容为 Authentication Token 的文件 <code>cluster_token.txt</code>，你把本机 <code>cluster_token.txt</code> 中的 token 复制到服务器上的 <code>cluster_token.txt</code> 中即可。不同系统中，这个文件目录不同。</p>
+<p>Windows：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%USERPROFILE%/My Documents/Klei/DoNotStarveTogether/cluster_token.txt</span><br></pre></td></tr></table></figure>
+<p>MacOS：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Documents/Klei/DoNotStarveTogether/cluster_token.txt</span><br></pre></td></tr></table></figure>
+<p>Linux：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.klei/DoNotStarveTogether/cluster_token.txt</span><br></pre></td></tr></table></figure>
+<p>配置 <code>cluster.ini</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[GAMEPLAY]</span></span><br><span class="line"><span class="attr">game_mode</span> = survival <span class="comment"># 游戏模式</span></span><br><span class="line"><span class="attr">max_players</span> = <span class="number">6</span> <span class="comment"># 最大玩家数</span></span><br><span class="line"><span class="attr">pvp</span> = <span class="literal">true</span> <span class="comment"># 是否开启 PVP</span></span><br><span class="line"><span class="attr">pause_when_empty</span> = <span class="literal">true</span> <span class="comment"># 没有人的时候暂停游戏</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[NETWORK]</span></span><br><span class="line"><span class="attr">lan_only_cluster</span> = <span class="literal">false</span></span><br><span class="line"><span class="attr">cluster_intention</span> = social</span><br><span class="line"><span class="attr">cluster_description</span> = </span><br><span class="line"><span class="attr">cluster_name</span> = my server <span class="comment"># 服务器名称</span></span><br><span class="line"><span class="attr">offline_cluster</span> = <span class="literal">false</span></span><br><span class="line"><span class="attr">cluster_password</span> = password <span class="comment"># 密码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[MISC]</span></span><br><span class="line"><span class="attr">console_enabled</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[SHARD]</span></span><br><span class="line"><span class="attr">shard_enabled</span> = <span class="literal">false</span></span><br><span class="line"><span class="attr">bind_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">master_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span></span><br><span class="line"><span class="attr">master_port</span> = <span class="number">10888</span></span><br><span class="line"><span class="attr">cluster_key</span> = defaultPass</span><br></pre></td></tr></table></figure>
+<p>写一个脚本方便启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">touch startdst.sh</span><br></pre></td></tr></table></figure>
+<p>将下面内容写入脚本：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/dstserver/bin</span><br><span class="line">screen -S <span class="string">"Don't Starve Together Server"</span> ./dontstarve_dedicated_server_nullrenderer</span><br></pre></td></tr></table></figure>
+<p>然后让脚本可以运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x startdst.sh</span><br></pre></td></tr></table></figure>
+<h2 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/startdst.sh</span><br></pre></td></tr></table></figure>
+<p>这时你在本机运行饥荒游戏，便可以看到这个服务器：<br><img src="https://user-images.githubusercontent.com/12998118/30770241-cce1e55c-a05d-11e7-81ae-c1c0674b8020.jpg" alt="服务器列表"><br><img src="https://user-images.githubusercontent.com/12998118/30770242-d216d9e2-a05d-11e7-958e-058ff3c957db.jpg" alt="这是一个独立服务器"></p>
+<p><code>Ctrl + C</code> 可以关闭服务器<br><code>Ctrl + A</code> 然后 <code>Ctrl + D</code> 可以后台运行，<code>screen -r</code> 可以恢复。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.linode.com/docs/game-servers/install-dont-starve-together-game-server-on-ubuntu" target="_blank" rel="noopener">Install Don’t Starve Together Game Server on Ubuntu 14.04</a></li>
+<li><a href="https://developer.valvesoftware.com/wiki/SteamCMD" target="_blank" rel="noopener">SteamCMD</a></li>
+<li><a href="https://github.com/FezVrasta/ark-server-tools/issues/677" target="_blank" rel="noopener">S_API FAIL SteamAPI_Init() failed; SteamAPI_IsSteamRunning() failed.</a></li>
+<li><a href="https://forums.kleientertainment.com/topic/58831-server-crashes-at-loading-nav-grid-help/" target="_blank" rel="noopener">Server Crashes at Loading Nav Grid - HELP!</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;饥荒联机版（Don’t Starve Together）是一款非常有意思的跨平台（甚至包括 Linux）生存类游戏。可是游戏里自建服务器是用某一位玩家的电脑做 server，这样作为 server 的玩家退出了，别的人也不能玩了。所以我们需要一台专门的服务器。网上大多的教程都有些过时，并不能成功搭建起来，所以折腾了一下，出了一个新版的搭建手册。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>开始使用 Electron</title>
+    <link href="http://lixueli.com/2017/09/11/electron-1/"/>
+    <id>http://lixueli.com/2017/09/11/electron-1/</id>
+    <published>2017-09-11T06:17:50.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>开始使用 Electron 构建跨平台桌面应用</p>
+<a id="more"></a>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><ul>
+<li><p><a href="https://electron.atom.io/" target="_blank" rel="noopener">Electron 官网</a></p>
+</li>
+<li><p><a href="https://github.com/electron/electron" target="_blank" rel="noopener">Electron Github</a></p>
+</li>
+<li><p><a href="https://github.com/sindresorhus/awesome-electron#community" target="_blank" rel="noopener">Awesome Electron</a></p>
+</li>
+</ul>
+<h3 id="视频资料"><a href="#视频资料" class="headerlink" title="视频资料"></a>视频资料</h3><ul>
+<li><a href="https://www.youtube.com/results?search_query=electron" target="_blank" rel="noopener">Youtube 上 Electron 的搜索结果</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始使用 Electron 构建跨平台桌面应用&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Helm 101</title>
+    <link href="http://lixueli.com/2017/07/21/helm-101/"/>
+    <id>http://lixueli.com/2017/07/21/helm-101/</id>
+    <published>2017-07-21T02:47:15.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>开始在 Kubernetes 中使用 Helm。</p>
+<a id="more"></a>
+<h2 id="关于-Helm"><a href="#关于-Helm" class="headerlink" title="关于 Helm"></a>关于 Helm</h2><p>Helm（意思：舵）是 Kubernetes（希腊语含义：舵手）的应用管理工具。Tiller（意思：舵柄）是 Helm 的服务器部分，通常运行在 K8s 集群内部。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>Chart</strong></p>
+<p>一个 <em>chart</em> 就是一个 Helm 包，包含应用所需要的各种资源、工具和服务，类似Homebrew 的 formula。</p>
+<p><strong>Repository</strong></p>
+<p><em>Repository</em>（仓库）是存放 <em>chart</em> 的地方。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看 Repository 列表</span><br><span class="line">$ helm repo list</span><br><span class="line">添加 Repository</span><br><span class="line">$ helm repo add &lt;repo_name&gt; &lt;repo_address&gt;</span><br><span class="line">更新各个 Repository 中的 chart 列表</span><br><span class="line">$ helm repo update</span><br></pre></td></tr></table></figure></p>
+<p><strong>Release</strong></p>
+<p><em>Release</em> 是 K8s 集群内部运行的 <em>chart</em> 的一个实例，同一个 <em>chart</em> 可以创建多个独立的实例。</p>
+<p>总结起来就是：Helm 往 Kubernetes 中安装 chart, 每一次安装都创建一个 release 实例。通过搜索 Helm chart 仓库可以找到你想要的 chart。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>已经安装 Kubernetes，建议 1.4.1 版本或更新。</li>
+<li><p>本地有 kubectl 的配置文件，Helm 的服务端 Tiller 将安装在 kuberctl config 对应的集群中，可通过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl config current-context</span><br><span class="line">minikube</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 Helm 命令行自动补全工具，在 <code>.bashrc</code> 或 <code>.zshrc</code> 中添加：</p>
+<ul>
+<li><code>$ source &lt;(helm completion &lt;shell_type&gt;)</code>，<code>shell_type</code> 为 <code>bash</code> 或 <code>zsh</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="安装-Helm"><a href="#安装-Helm" class="headerlink" title="安装 Helm"></a>安装 Helm</h2><p><strong>1. 通过二进制包安装：</strong></p>
+<ul>
+<li>在  <a href="https://github.com/kubernetes/helm/releases" target="_blank" rel="noopener">这里</a> 下载需要的版本</li>
+<li>通过 <code>tar -zxvf helm-v2.0.0-linux-amd64.tgz</code> 解压缩文件</li>
+<li>将二进制文件移动到 <code>/usr/local/bin/helm</code> 文件夹： <code>mv linux-amd64/helm /usr/local/bin/helm</code></li>
+</ul>
+<p><strong>2. MacOS 通过 homebrew 安装：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install helm</span><br></pre></td></tr></table></figure></p>
+<h2 id="初始化-Helm-安装-Tiller"><a href="#初始化-Helm-安装-Tiller" class="headerlink" title="初始化 Helm 安装 Tiller"></a>初始化 Helm 安装 Tiller</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ helm init</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果想安装在指定的集群，使用 <code>--kube-context</code></li>
+<li>升级 Tiller 可以直接运行：<code>helm init --upgrade</code></li>
+</ul>
+<h2 id="查找-chart"><a href="#查找-chart" class="headerlink" title="查找 chart"></a>查找 chart</h2><p>搜索 chart，可使用正则，会匹配 chart 名和描述。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ helm search &lt;keyword&gt;</span><br><span class="line">-r, --regexp           use regular expressions for searching</span><br><span class="line">-v, --version string   search using semantic versioning constraints</span><br><span class="line">-l, --versions         show the long listing, with each version of each chart on its own line</span><br><span class="line">Options inherited from parent commands</span><br></pre></td></tr></table></figure></p>
+<p>查看某个具体 chart 的简介<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ helm inspect &lt;chart_name&gt;</span><br><span class="line">$ helm inspect chart &lt;chart_name&gt;</span><br><span class="line">$ helm inspect values &lt;chart_name&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装-chart"><a href="#安装-chart" class="headerlink" title="安装 chart"></a>安装 chart</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ helm install stable/mysql</span><br><span class="line">NAME:   angry-kudu # 构建了一个叫 angry-kudu 的 release</span><br><span class="line">LAST DEPLOYED: Thu Jul 20 14:50:53 2017</span><br><span class="line">NAMESPACE: default</span><br><span class="line">STATUS: DEPLOYED</span><br><span class="line"></span><br><span class="line">RESOURCES:</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">NOTES:</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>在安装 chart 之前，可以通过：</p>
+<ul>
+<li><code>$ helm repo update</code> 来更新仓库中的最新可用 charts 列表。</li>
+<li><code>$ helm search xxx</code> 来搜索想要安装的 chart 是否存在。</li>
+</ul>
+<h2 id="自定义-chart-配置"><a href="#自定义-chart-配置" class="headerlink" title="自定义 chart 配置"></a>自定义 chart 配置</h2><p>直接安装使用的是默认的配置，如果想自定义配置，可以根据 chart 提供的配置项，自定义配置文件，然后再创建 release。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ helm inspect values &lt;chart_name&gt;</span><br><span class="line">$ echo &apos;&#123;mariadbUser: user0, mariadbDatabase: user0db&#125;&apos; &gt; config.yaml</span><br><span class="line">$ helm install -f config.yaml stable/mariadb</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看-release-状态"><a href="#查看-release-状态" class="headerlink" title="查看 release 状态"></a>查看 release 状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ helm status &lt;release_name&gt;</span><br><span class="line">LAST DEPLOYED: Thu Jul 20 14:50:53 2017</span><br><span class="line">NAMESPACE: default</span><br><span class="line">STATUS: DEPLOYED</span><br><span class="line"></span><br><span class="line">RESOURCES:</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">NOTES:</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="查看-release-列表"><a href="#查看-release-列表" class="headerlink" title="查看 release 列表"></a>查看 release 列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查看 release</span><br><span class="line">$ helm list</span><br><span class="line">或简写为</span><br><span class="line">$ helm ls</span><br><span class="line"></span><br><span class="line">--all 可以查看所有 release（包括被删除的）</span><br><span class="line">$ helm list --all</span><br></pre></td></tr></table></figure>
+<h2 id="升级-release"><a href="#升级-release" class="headerlink" title="升级 release"></a>升级 release</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ helm upgrade &lt;release_name&gt; &lt;chart_name&gt;</span><br><span class="line">如</span><br><span class="line">$ helm upgrade -f update.yaml &lt;release_name&gt; &lt;chart_name&gt;</span><br><span class="line">$ helm upgrade --set &lt;key&gt;=&lt;value&gt; &lt;release_name&gt; &lt;chart_name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="回滚-release"><a href="#回滚-release" class="headerlink" title="回滚 release"></a>回滚 release</h2><p>使用 <code>helm rollback</code> 回滚到之前的版本，回滚之后也会创建一个 revision。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ helm rollback &lt;release_name&gt; &lt;revision_number&gt;</span><br></pre></td></tr></table></figure></p>
+<p>查看 release 的各个 revision 版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ helm history &lt;release_name&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="删除-release"><a href="#删除-release" class="headerlink" title="删除 release"></a>删除 release</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ helm delete angry-kudu</span><br><span class="line">release &quot;dining-antelope&quot; deleted</span><br></pre></td></tr></table></figure>
+<h2 id="创建自己的-chart"><a href="#创建自己的-chart" class="headerlink" title="创建自己的 chart"></a>创建自己的 chart</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">创建 chart</span><br><span class="line">$ helm create &lt;chart_name&gt;</span><br><span class="line"></span><br><span class="line">检查 chart 是否符合规范</span><br><span class="line">$ helm lint</span><br><span class="line"></span><br><span class="line">打包 chart</span><br><span class="line">$ helm package deis-workflow</span><br><span class="line">deis-workflow-0.1.0.tgz</span><br><span class="line"></span><br><span class="line">安装</span><br><span class="line">$ helm install ./deis-workflow-0.1.0.tgz</span><br></pre></td></tr></table></figure>
+<h2 id="获取帮助信息"><a href="#获取帮助信息" class="headerlink" title="获取帮助信息"></a>获取帮助信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ helm &lt;command_name&gt; -h</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://docs.helm.sh/using_helm/" target="_blank" rel="noopener">Helm Documentation - Using Helm</a></li>
+<li><a href="https://docs.helm.sh/helm/" target="_blank" rel="noopener">Helm Documentation - Helm Commands</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始在 Kubernetes 中使用 Helm。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="k8s" scheme="http://lixueli.com/tags/k8s/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>资源站推荐</title>
+    <link href="http://lixueli.com/2017/07/11/resources-recommendation/"/>
+    <id>http://lixueli.com/2017/07/11/resources-recommendation/</id>
+    <published>2017-07-11T07:04:26.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>免费、无版权的图片、视频、音乐等资源站推荐</p>
+<a id="more"></a>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><ul>
+<li><a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a></li>
+<li><a href="https://stocksnap.io" target="_blank" rel="noopener">stocksnap</a></li>
+<li><a href="http://www.gratisography.com/" target="_blank" rel="noopener">GRATISOGRAPHY</a></li>
+<li><a href="https://burst.shopify.com/" target="_blank" rel="noopener">BURST</a></li>
+<li><a href="https://gallery.manypixels.co/" target="_blank" rel="noopener">Illustration Gallery</a></li>
+</ul>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul>
+<li><a href="http://www.coverr.co/" target="_blank" rel="noopener">coverr</a></li>
+<li><a href="http://mazwai.com/#/" target="_blank" rel="noopener">mazwai</a></li>
+<li><a href="http://www.wedistill.io/" target="_blank" rel="noopener">DISTILL</a></li>
+<li><a href="https://www.pexels.com/videos" target="_blank" rel="noopener">Pexels</a></li>
+</ul>
+<h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><ul>
+<li><a href="http://www.freeplaymusic.com" target="_blank" rel="noopener">freeplaymusic</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;免费、无版权的图片、视频、音乐等资源站推荐&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Alfred Ant Design 文档速查 workflow</title>
+    <link href="http://lixueli.com/2017/07/06/alfred-ant-design-doc-workflow/"/>
+    <id>http://lixueli.com/2017/07/06/alfred-ant-design-doc-workflow/</id>
+    <published>2017-07-06T14:35:24.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>可以快速查看 Ant Design 组件文档的 Alfred workflow</p>
+<a id="more"></a>
+<p><a href="http://7xtej9.com1.z0.glb.clouddn.com/antdesigndoc.alfredworkflow" target="_blank" rel="noopener">下载地址</a></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fhb43loxlsj30xa0iutbu.jpg" alt></p>
+<p><img src="http://wx1.sinaimg.cn/large/9055c5d8gy1fhaii88ik2g21mo110b2e.gif" alt></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;可以快速查看 Ant Design 组件文档的 Alfred workflow&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端学习资料推荐（基础篇）</title>
+    <link href="http://lixueli.com/2017/05/13/frontend-basic-resource/"/>
+    <id>http://lixueli.com/2017/05/13/frontend-basic-resource/</id>
+    <published>2017-05-13T03:43:48.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇文章推荐一些前端学习的书籍和在线资料，聚焦前端最基本部分：HTML、CSS、JavaScript。希望推荐少而精的学习资料，少走弯路、快速入门前端。</p>
+<a id="more"></a>
+<p>前端基础学习分为 HTML、CSS 和 JavaScript 三部分，CSS 主要包括 CSS2 和 CSS3、Javascript 主要包括 ES5 和 ES6。</p>
+<h2 id="1-MDN"><a href="#1-MDN" class="headerlink" title="1. MDN"></a>1. MDN</h2><p>MDN (Mozilla Developer Network) Mozilla 开发者网络。Web 学习相关的文档、资料都可以在上面找到，详细、准确，大部分资料有中文翻译。<a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener">英文入口</a> <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">中文入口</a></p>
+<h2 id="2-《CSS设计指南》"><a href="#2-《CSS设计指南》" class="headerlink" title="2. 《CSS设计指南》"></a>2. 《CSS设计指南》</h2><p><img src="https://img3.doubanio.com/lpic/s26328623.jpg" alt="《CSS设计指南》"></p>
+<p>本书开篇讲解了一些基础而关键的 HTML 入门知识介绍，配黑 MDN 的 HTML 文档，HTML 部分的基础知识可以完全搞定。本书把很多 CSS2 的基本知识讲的很清楚明白，比如：选择器、盒模型、清除浮动等等。虽然有很多全面的 CSS 技术书籍，但是这本200多页的书已经把 CSS2 的的关键内容都讲到，CSS 的学习应该把大量时间花在实战上。</p>
+<h2 id="3-《图解CSS3》"><a href="#3-《图解CSS3》" class="headerlink" title="3. 《图解CSS3》"></a>3. 《图解CSS3》</h2><p><img src="https://img3.doubanio.com/lpic/s27319226.jpg" alt="《图解CSS3》"></p>
+<p>详尽的介绍了 CSS3 的新特性，示例丰富。</p>
+<h2 id="4-《CSS揭秘》"><a href="#4-《CSS揭秘》" class="headerlink" title="4. 《CSS揭秘》"></a>4. 《CSS揭秘》</h2><p><img src="https://img1.doubanio.com/lpic/s28659699.jpg" alt="《CSS揭秘》"></p>
+<p>这是本 CSS 的进阶书籍，介绍了很多个鲜为人知的 CSS 小技巧，在对实际使用非常有帮助，帮助我们开拓使用 CSS 的思路。</p>
+<h2 id="5-Can-I-Use"><a href="#5-Can-I-Use" class="headerlink" title="5. Can I Use?"></a>5. Can I Use?</h2><p>前端开发中经常处理的一类问题就是浏览器兼容性问题，<a href="http://caniuse.com/" target="_blank" rel="noopener">caniuse.com</a> 这个网站可以查询所有的 CSS 特性在不同浏览器上的兼容性。</p>
+<h2 id="6-《JavaScript高级程序设计》"><a href="#6-《JavaScript高级程序设计》" class="headerlink" title="6. 《JavaScript高级程序设计》"></a>6. 《JavaScript高级程序设计》</h2><p><img src="https://img3.doubanio.com/lpic/s8958650.jpg" alt="《JavaScript高级程序设计》"></p>
+<p>江湖人称“红宝书”，与“<a href="https://book.douban.com/subject/10549733/" target="_blank" rel="noopener">犀牛书</a>”并称最为经典的 JavaScript 书入门书籍，需要慢慢看、反复看。</p>
+<h2 id="7-《JavaScript语言精粹》"><a href="#7-《JavaScript语言精粹》" class="headerlink" title="7. 《JavaScript语言精粹》"></a>7. 《JavaScript语言精粹》</h2><p><img src="https://img3.doubanio.com/lpic/s3651235.jpg" alt="《JavaScript语言精粹》"></p>
+<p>本书通过对JavaScript语言的分析，甄别出好的和坏的特性，从而提取出相对这门语言的整体而言具有更好的可靠性、可读性和可维护性的JavaScript的子集，以便你能用它创建真正可扩展的和高效的代码。</p>
+<h2 id="8-《ES6-标准入门》"><a href="#8-《ES6-标准入门》" class="headerlink" title="8. 《ES6 标准入门》"></a>8. 《ES6 标准入门》</h2><p><img src="https://img3.doubanio.com/lpic/s28383612.jpg" alt="《ES6 标准入门E"></p>
+<p>作者是阮一峰老师，介绍了 JavaScript 新特性 ES6 部分的语法，随着 ES6 使用的日益广泛，ES6 的学习也是必不可少的。<a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">在线版免费</a></p>
+<h2 id="9-Devdocs"><a href="#9-Devdocs" class="headerlink" title="9. Devdocs"></a>9. Devdocs</h2><p>看文档是开发中最常做的事情，<a href="http://devdocs.io/" target="_blank" rel="noopener">Devdocs</a> 是一个文档聚合查看的 Chrome 应用，所以支持多平台，文档种类丰富、可搜索、可离线。</p>
+<p>文中提到的书籍整理了一个<a href="https://www.douban.com/doulist/45987367/" target="_blank" rel="noopener">豆列</a>日后会继续更新。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇文章推荐一些前端学习的书籍和在线资料，聚焦前端最基本部分：HTML、CSS、JavaScript。希望推荐少而精的学习资料，少走弯路、快速入门前端。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="前端" scheme="http://lixueli.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 kismatic 在虚拟机上部署 Kubernetes</title>
+    <link href="http://lixueli.com/2017/04/24/deploy-kubernetes-with-kismatic-on-vm/"/>
+    <id>http://lixueli.com/2017/04/24/deploy-kubernetes-with-kismatic-on-vm/</id>
+    <published>2017-04-24T10:38:59.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/apprenda/kismatic" target="_blank" rel="noopener">Kismatic</a> 是 Kubernetes 的自动化部署工具，使用它可以在 Linux 上快速部署 Kubernetes。</p>
+<a id="more"></a>
+<h2 id="1-准备虚拟机"><a href="#1-准备虚拟机" class="headerlink" title="1. 准备虚拟机"></a>1. 准备虚拟机</h2><p>我选择的是 <a href="https://my.vultr.com" target="_blank" rel="noopener">Vultr</a> 的虚拟机，价格适中，管理方便。<br>我们需要两台虚拟机，其中 etcd、master 可以在同一个节点上，worker 单独一个节点。<br>所以我们选择两台新加坡的 CentOS 7 机器；上传 SSH 公钥，方便 SSH 登录；设置机器的 hostname；点击创建。<br>待虚拟机创建完成，你就拥有了两台带公网 IP 的节点。</p>
+<p><em>说明：为什么要使用新加坡节点？延迟小，丢包少，拉取镜像又不需要翻墙。</em></p>
+<h2 id="2-准备-kismatic"><a href="#2-准备-kismatic" class="headerlink" title="2. 准备 kismatic"></a>2. 准备 kismatic</h2><h3 id="1-Kismatic-支持的操作系统"><a href="#1-Kismatic-支持的操作系统" class="headerlink" title="1. Kismatic 支持的操作系统"></a>1. Kismatic 支持的操作系统</h3><pre><code>* RHEL 7
+* CentOS 7
+* Ubuntu 16.04
+</code></pre><h3 id="2-下载-Kismatic"><a href="#2-下载-Kismatic" class="headerlink" title="2. 下载 Kismatic"></a>2. 下载 Kismatic</h3><p>在 <a href="https://github.com/apprenda/kismatic/releases" target="_blank" rel="noopener">Releases · apprenda/kismatic · GitHub</a> 页面，根据操作系统（目前支持 LInux 和 Mac）下载 kismatic 文件，放到文件夹中。<br>下面命令以 MacOS、Kismatic 1.3.0 为例。</p>
+<h3 id="3-确认-kismatic-可用"><a href="#3-确认-kismatic-可用" class="headerlink" title="3. 确认 kismatic 可用"></a>3. 确认 kismatic 可用</h3><p>进入 <code>kismatic-v1.3.0-darwin-amd64</code> 文件夹，输入 <code>./kismatic help</code> 命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kismatic <span class="built_in">help</span></span><br></pre></td></tr></table></figure></p>
+<p>如果返回 kismatic 的帮助信息，那么 kismatic 则可用，帮助信息大致如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">kismatic is the main tool <span class="keyword">for</span> managing your Kubernetes cluster</span><br><span class="line">more documentation is availble at https://github.com/apprenda/kismatic</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  kismatic</span><br><span class="line">  kismatic [<span class="built_in">command</span>]</span><br><span class="line"></span><br><span class="line">Available Commands:</span><br><span class="line">  dashboard   Opens/displays the kubernetes dashboard URL of the cluster</span><br><span class="line">  diagnose    Collects diagnostics about the nodes <span class="keyword">in</span> the cluster</span><br><span class="line">  info        Display info about nodes <span class="keyword">in</span> the cluster</span><br><span class="line">  install     install your Kubernetes cluster</span><br><span class="line">  ip          retrieve the IP address of the cluster</span><br><span class="line">  ssh         ssh into a node <span class="keyword">in</span> the cluster</span><br><span class="line">  upgrade     Upgrade your Kubernetes cluster</span><br><span class="line">  version     display the Kismatic CLI version</span><br><span class="line">  volume      manage storage volumes on your Kubernetes cluster</span><br><span class="line"></span><br><span class="line">Use <span class="string">"kismatic [command] --help"</span> <span class="keyword">for</span> more information about a <span class="built_in">command</span>.</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-使用-kismatic-部署-K8s"><a href="#3-使用-kismatic-部署-K8s" class="headerlink" title="3. 使用 kismatic 部署 K8s"></a>3. 使用 kismatic 部署 K8s</h2><p>文档：<a href="https://github.com/apprenda/kismatic/blob/master/docs/INSTALL.md" target="_blank" rel="noopener">kismatic/INSTALL.md at master · apprenda/kismatic · GitHub</a></p>
+<h3 id="1-使用-Kismatic-的部署流程大致分为四步："><a href="#1-使用-Kismatic-的部署流程大致分为四步：" class="headerlink" title="1. 使用 Kismatic 的部署流程大致分为四步："></a>1. 使用 Kismatic 的部署流程大致分为四步：</h3><p>Plan（计划） -&gt; Provision（准备） -&gt; Validate（验证） -&gt; Apply（应用）</p>
+<pre><code>* Plan（计划）：
+    * 做一些部署相关的选择，Kismatic 会根据相应的选择生成一个 `kismatic-cluster.yaml` 文件。
+* Provision（准备）
+    * 准备机器
+    * 准备网络
+* Validate（验证）
+    * 根据 `kismatic-cluster.yaml` 文件检查机器核网络是否可以安装。
+* Apply（应用）
+    * 根据 `kismatic-cluster.yaml` 文件来部署，并在结束后进行冒烟测试。
+</code></pre><h3 id="2-部署流程"><a href="#2-部署流程" class="headerlink" title="2. 部署流程"></a>2. 部署流程</h3><p><strong>1.kismatic intall plan</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kismatic install plan</span><br></pre></td></tr></table></figure>
+<p>由于这里是一个简易的部署，所以只设置了etcd、master、work 节点各一个，plan 的过程和结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Plan your Kubernetes cluster:</span><br><span class="line">=&gt; Number of etcd nodes [3]: 1</span><br><span class="line">=&gt; Number of master nodes [2]: 1</span><br><span class="line">=&gt; Number of worker nodes [3]: 1</span><br><span class="line">=&gt; Number of ingress nodes (optional, <span class="built_in">set</span> to 0 <span class="keyword">if</span> not required) [2]: 0</span><br><span class="line">=&gt; Number of storage nodes (optional, <span class="built_in">set</span> to 0 <span class="keyword">if</span> not required) [0]: 0</span><br><span class="line">=&gt; Number of existing NFS volumes to be attached [0]: 0</span><br><span class="line"></span><br><span class="line">Generating installation plan file template with:</span><br><span class="line">- 1 etcd nodes</span><br><span class="line">- 1 master nodes</span><br><span class="line">- 1 worker nodes</span><br><span class="line">- 0 ingress nodes</span><br><span class="line">- 0 storage nodes</span><br><span class="line">- 0 nfs volumes</span><br><span class="line"></span><br><span class="line">Wrote plan file template to <span class="string">"kismatic-cluster.yaml"</span></span><br><span class="line">Edit the plan file to further describe your cluster. Once ready, execute the <span class="string">"install validate"</span> <span class="built_in">command</span> to proceed.</span><br></pre></td></tr></table></figure></p>
+<p>这时目录下多了一个 <code>kismatic-cluster.yaml</code> 文件，打开该文件，进行进一步的配置。</p>
+<p><strong>2.修改虚拟机 hostname：</strong></p>
+<p>没有修改 hostname 的时候，Validate  的时候一直报<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">verify worker node to master node connectivity using hostname [ERROR]</span><br></pre></td></tr></table></figure></p>
+<p>后来发现把 hostname 改为机器 IP 就验证成功了，修改 hostname 方法如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hostname new-server-name-here</span><br><span class="line">nano /etc/hostname <span class="comment"># 修改里面的旧 hostname 为新 hostname</span></span><br><span class="line">nano /etc/hosts <span class="comment"># 把 127.0.1.1 和 ::1 之后的旧 hostname 改为新 hostname</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/" target="_blank" rel="noopener">修改 Linux hostname</a></p>
+<p><strong>3.配置 kismatic-cluster.yaml</strong></p>
+<p>配置 ssh：<br>修改 cluster -&gt; ssh 下的 <code>user</code> 和 <code>ssh_key</code>，<code>user</code> 一般为 <code>root</code>，<code>ssh_key</code> （本地 ssh 私钥的绝对路径），Mac 系统下一般为 <code>/Users/username/.ssh/id_rsa</code>。<br>注意：把本机的 SSH 公钥放到虚拟机 root 用户的 ~/.ssh/authorized_keys 中，确保执行 kismatic 的机器可以无密码访问部署的机器。如果在创建虚拟机的时候选择了 SSH 公钥，那么 <code>authorized_keys</code> 就已经存在了。</p>
+<p>配置节点的 IP 和 hostname：<br>我们只需要配置了 etcd、master、worker 节点，节点配置大致如下：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">etcd:</span></span><br><span class="line">  <span class="attr">expected_count:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">nodes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">host:</span> <span class="string">"虚拟机1的 IP"</span></span><br><span class="line">    <span class="attr">ip:</span> <span class="string">"虚拟机1的 IP"</span></span><br><span class="line">    <span class="attr">internalip:</span> <span class="string">""</span></span><br><span class="line"><span class="attr">master:</span></span><br><span class="line">  <span class="attr">expected_count:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">load_balanced_fqdn:</span> <span class="string">"虚拟机1的 IP"</span></span><br><span class="line">  <span class="attr">load_balanced_short_name:</span> <span class="string">"虚拟机1的 IP"</span></span><br><span class="line">  <span class="attr">nodes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">host:</span> <span class="string">"虚拟机1的 IP"</span></span><br><span class="line">    <span class="attr">ip:</span> <span class="string">"虚拟机1的 IP"</span></span><br><span class="line">    <span class="attr">internalip:</span> <span class="string">""</span></span><br><span class="line"><span class="attr">worker:</span></span><br><span class="line">  <span class="attr">expected_count:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">nodes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">host:</span> <span class="string">"虚拟机2的 IP"</span></span><br><span class="line">    <span class="attr">ip:</span> <span class="string">"虚拟机2的 IP"</span></span><br><span class="line">    <span class="attr">internalip:</span> <span class="string">""</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>4.关闭虚拟机上的防火墙：</strong></p>
+<p>CentOS 7 会默认开启防火墙，这会导致 Kismatic 验证、安装失败。<br>通过 <code>ssh root@虚拟机 IP</code> 登录远程机器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld <span class="comment"># 禁用防火墙</span></span><br><span class="line">systemctl stop firewalld <span class="comment"># 停止防火墙</span></span><br><span class="line">systemctl status firewalld <span class="comment"># 查看防火墙状态</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="[How to Stop and Disable Firewalld on CentOS 7 – Liquid Web Knowledge Base]https://www.liquidweb.com/kb/how-to-stop-and-disable-firewalld-on-centos-7/">如何关闭 CentOS 7 的防火墙</a></p>
+<p><strong>5.kismatic intall validate</strong></p>
+<p>进行验证：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kismatic install validate</span><br></pre></td></tr></table></figure></p>
+<p>验证完毕：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Validating==========================================================================</span><br><span class="line">Reading installation plan file <span class="string">"kismatic-cluster.yaml"</span>                          [OK]</span><br><span class="line">Validating installation plan file                                               [OK]</span><br><span class="line">Validating SSH connectivity to nodes                                            [OK]</span><br><span class="line">Configure Cluster Prerequisites                                                 [OK]</span><br><span class="line">Run Cluster Pre-Flight Checks                                                   [OK]</span><br></pre></td></tr></table></figure></p>
+<p><strong>6.kismatic install apply</strong></p>
+<p>进行部署：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kismatic install apply</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-使用集群"><a href="#4-使用集群" class="headerlink" title="4. 使用集群"></a>4. 使用集群</h2><h3 id="1-使用-kubectl"><a href="#1-使用-kubectl" class="headerlink" title="1. 使用 kubectl"></a>1. 使用 kubectl</h3><p>在 kismatic 文件夹中使用 <code>kubectl --kubeconfig generated/kubeconfig</code> 命令<br>或者复制配置文件 cp generated/kubeconfig ~/.kube/config</p>
+<h3 id="2-打开-Dashboard"><a href="#2-打开-Dashboard" class="headerlink" title="2. 打开 Dashboard"></a>2. 打开 Dashboard</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kismatic dashboard</span><br></pre></td></tr></table></figure>
+<p>会打开 <a href="https://45.76.186.209:6443/ui，登录名为" target="_blank" rel="noopener">https://45.76.186.209:6443/ui，登录名为</a> root，密码为 <code>kismatic-cluster.yamlDashboard</code> 中 <code>admin_password</code> 字段的值，Dashboard 显示如下：<br><img src="http://ww2.sinaimg.cn/large/006tNbRwgy1fexypn8vctj30zm0m9djl.jpg" alt="Kubernetes Dashboard"></p>
+<h3 id="3-安装-Heapster"><a href="#3-安装-Heapster" class="headerlink" title="3. 安装 Heapster"></a>3. 安装 Heapster</h3><ol>
+<li>克隆 <a href="[GitHub - kubernetes/heapster: Compute Resource Usage Analysis and Monitoring of Container Clusters]https://github.com/kubernetes/heapster">heapster repo</a> 到本地</li>
+<li>在 kismatic 文件夹中 <code>kubectl --kubeconfig generated/kubeconfig create -f path/to/heapster/deploy/kube-config/influxdb/</code></li>
+<li>等待 heapster 安装完成，刷新 Dashboard，监控图表已经出现了：<br><img src="http://ww4.sinaimg.cn/large/006tNbRwgy1fexynfmtvhj30zm0m9djl.jpg" alt="安装了 Heapster 的 Kubernetes Dashboard"></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/apprenda/kismatic&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Kismatic&lt;/a&gt; 是 Kubernetes 的自动化部署工具，使用它可以在 Linux 上快速部署 Kubernetes。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="k8s" scheme="http://lixueli.com/tags/k8s/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac Chrome 出现 net::ERR_CERT_DATABASE_CHANGED 以及 net::ERR_NETWORK_CHANGED 问题</title>
+    <link href="http://lixueli.com/2017/04/19/mac-chrome-network-problem/"/>
+    <id>http://lixueli.com/2017/04/19/mac-chrome-network-problem/</id>
+    <published>2017-04-19T12:22:07.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个困扰了我好久的问题，Mac 上 Chrome 经常出现 <code>net::ERR_CERT_DATABASE_CHANGED</code> 以及 <code>net::ERR_NETWORK_CHANGED</code> 的问题，会导致上传文件失败，js 脚本拉不到，AJAX 请求失败等。一开始以为是 Chrome 的问题，因为浏览器换成 Safari 之后就好了，没想到竟然是 Mac 升级到 Sierra 之后老旧不用的支付宝的插件导致的。</p>
+<a id="more"></a>
+<p><strong>关于这个问题的一些讨论</strong></p>
+<ul>
+<li><a href="http://weibo.com/1812166904/EcafVhwmc?sudaref=www.google.com.vn&amp;retcode=6102&amp;type=comment#_rnd1492597468055" target="_blank" rel="noopener">Barret李靖的微博</a></li>
+<li><a href="https://www.v2ex.com/t/307911" target="_blank" rel="noopener">MacOS Sierra 升级 CHROME 用 HTTPS 访问间歇性失败 - V2EX</a></li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl remove com.alipay.DispatcherService <span class="comment"># 执行完这条就已经有了立竿见影的效果</span></span><br><span class="line"><span class="comment"># 以下命令是为了彻底清除万恶的支付宝插件，请确认存在后删除</span></span><br><span class="line">sudo rm -rf /Library/Application\ Support/Alipay </span><br><span class="line">sudo rm -rf /Library/LaunchDaemons/com.alipay.DispatcherService.plist </span><br><span class="line">sudo rm -rf ~/Library/LaunchAgents/com.alipay.adaptor.plist </span><br><span class="line">sudo rm -rf ~/Library/LaunchAgents/com.alipay.refresher.plist </span><br><span class="line">sudo rm -rf ~/Library/Internet\ Plug-Ins/aliedit.plugin</span><br><span class="line">sudo rm -rf ~/Library/Internet\ Plug-Ins/npalicdo.plugin</span><br></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一个困扰了我好久的问题，Mac 上 Chrome 经常出现 &lt;code&gt;net::ERR_CERT_DATABASE_CHANGED&lt;/code&gt; 以及 &lt;code&gt;net::ERR_NETWORK_CHANGED&lt;/code&gt; 的问题，会导致上传文件失败，js 脚本拉不到，AJAX 请求失败等。一开始以为是 Chrome 的问题，因为浏览器换成 Safari 之后就好了，没想到竟然是 Mac 升级到 Sierra 之后老旧不用的支付宝的插件导致的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>计算机专业学习的一些思考与总结</title>
+    <link href="http://lixueli.com/2017/04/19/cs-learning/"/>
+    <id>http://lixueli.com/2017/04/19/cs-learning/</id>
+    <published>2017-04-19T06:00:12.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一篇旧文，写于两年前毕业之际，最初发布在<a href="http://www.jianshu.com/p/0dff5466217e" title="简书链接&quot; target=&quot;_blank" target="_blank" rel="noopener">简书</a>上，最近发现依然能给计算机、互联网初学者带来帮助。</p>
+<a id="more"></a>
+<p><img src="http://upload-images.jianshu.io/upload_images/51201-0bdc90b4b6804f00.png" alt="Apple WWDC 2014 标志及宣传语"></p>
+<p><em>大学四年不知不觉一晃而过，在临近毕业之际，写下这篇文章一方面是对自己的总结，另一方面向其他同学分享我的经验。</em></p>
+<hr>
+<p><br></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/51201-7d46e6f0419d0d91.jpg" alt></p>
+<h2 id="1-兴趣是最好的老师"><a href="#1-兴趣是最好的老师" class="headerlink" title="1.兴趣是最好的老师"></a>1.兴趣是最好的老师</h2><p>有两种力量会推动我们不断前行，一种是兴趣，一种是责任感。其实在前行的路上会发现这两种力量往往会互相支持着我们前行：因为兴趣我们开始了我们的学习、事业，遇到了困难，因为责任而坚持；遇到了瓶颈，忽发现这些正是自己的热爱所在，又坚持了下来，就像这样循环往复以至最后。</p>
+<p>编程是一件很需要兴趣的事情，因为它需要不断的学习，不断的练习，这其中会包含许多不解的难题、无法fix的bug、难眠的夜晚，如果你不能发现其中的乐趣，很难坚持下去并且把它做好。</p>
+<p>如果你是计算机专业的，并且喜欢编程，那么你很幸运可以快乐地畅游在代码的海洋中；如果你是计算机专业的，但是一点也不喜欢编程，而是已经有了其他的想法，那么你也很幸运，因为你有了奋斗一生的目标。如果你是计算机专业的，但是一点也不喜欢编程，但是不知道要做些什么，没关系尽管去尝试、去找寻，不要把时间浪费在一点也不喜欢的事情上。如果你不是计算机专业，但却喜欢编程，那么放手去编程吧，编程方面的知识通过自学完全可以，我的第一份工作所用到的知识，大部分不是源于课堂，而是来自于自我学习。如果你在纠结要不要从事编程相关的工作或者想从事编程相关的公作又缺乏兴趣，那么我推荐几种培养兴趣的方法。</p>
+<p><strong>（1）寻找自己的偶像</strong></p>
+<p>在体育明星中我们经常会听到某一个成功的运动员被采访时会说我是因为看了某某某的比赛而开始训练、比赛并且让我一直坚持下去的。我们也需要自己的偶像，一个能激励我们不断学习，在困难时让我们坚持下去的人，“程序猿”的偶像们通常智力超群、目光坚定、成就超凡，比如苹果公司的乔布斯和沃兹尼亚克、微软的比尔·盖茨、谷歌的拉里·佩奇和谢尔盖·布林、Facebook的扎克伯格等等，他们通常以Make The World A Better Place为己任。的确，因为他们，因为技术，因为“程序猿”们，我们的世界飞速发展，智能手机、网络，我们的世界的确更好了。当你通过观看他们的采访、演讲、纪录片、专记等等，那帮看似无趣的“程序猿”，其实才华横溢、极富人格魅力，让我们也想成为他们那样的人。</p>
+<p><strong>（2）书籍与影视作品</strong></p>
+<p>这和上一点有点像，随着对编程的了解、对编程的人的了解、对他们生活的了解，很可能会产生加入他们的兴趣。我收集了一些作品列表，<a href="http://www.douban.com/doulist/39404591/" title="程序员阅读手册（不断更新中）&quot; target=&quot;_blank" target="_blank" rel="noopener">程序员阅读手册（不断更新中）</a>、<a href="http://www.douban.com/doulist/39349440/" title="程序员观影手册（不断更新中）&quot; target=&quot;_blank" target="_blank" rel="noopener">程序员观影手册（不断更新中）</a>。记得我看完一部讲述一群独立游戏开发者的纪录片《独立游戏大电影》之后，立刻下载了游戏引擎捣鼓起来，在后来的多门课的课程设计中我都做了小游戏。</p>
+<p><strong>（3）最重要的，现在就开始编程</strong></p>
+<p>记得大一的时候，我对编程并没有兴趣，我觉得编程只是我大学生涯的作业、任务，我学习的很被动，只能勉强能够应付课程和考试。但是在那些被动尝试的过程中，我却感受到了程序输出正确时那种成功的喜悦，bug不能解决时想放弃的无助以及经过不懈努力解决bug时的柳暗花明。正是这些尝试、体验，然我了解到编程其实是乐趣横生的。如果你喜欢挑战，喜欢新鲜事物，编程一定能给你带来乐趣。我们会有很多机会能把兴趣和编程联系起来，各种课程会有各种课程设计，老师的要求通常是，使用Java语言（或是某某其他语言）、使用与课程相关的知识，做一个作品。这时我们可以做些自己想做的课题，做些有意思的，自己会使用的东西。</p>
+<p><br></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/51201-599d3fabe0006675.jpg" alt></p>
+<h2 id="2-速成的谎言，坚持才是不二法门"><a href="#2-速成的谎言，坚持才是不二法门" class="headerlink" title="2.速成的谎言，坚持才是不二法门"></a>2.速成的谎言，坚持才是不二法门</h2><p>经常在书店里看到这样一类书，《21天学会XXX》系列，《7天学会做网站》，我买过、也看过，这类书无非是抓住人们渴望“速成”的心态，一本书一般就说了一个例子，演示了一个例子的过程，而对细节的解释远远不够，看完之后只会有大概的了解，离学会、熟练掌握还相去甚远。</p>
+<p>Peter Norvig 写过，计算机博士徐宥翻译过一篇文章——《十年学会程序设计》里提到编程像所有其他的技艺一样，遵循一万小时理论，即不断的练习才会真正的掌握编程这门技艺，编程既是技术、也是艺术，要成为编程大师，我们需要灵感、天赋、反复的练习、在挫折中进步。来不得半点马虎，速成是不可能实现的，坚持才能。</p>
+<p><br></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/51201-4a1eeda1fc453942.jpg" alt></p>
+<h2 id="3-我的编程学习经验"><a href="#3-我的编程学习经验" class="headerlink" title="3.我的编程学习经验"></a>3.我的编程学习经验</h2><p><em>前面扯了那么多闲话，下面干货来了～ 分享一点我自己学习的经验。</em></p>
+<p><strong>（1）学校学习</strong></p>
+<p>我觉得学校的课程中，有几类课是十分重要的。一类是语言基础课，尤其是你大学乃至人生的第一门编程语言课是十分重要的，因为它会培养你最初编程感，培养你编程的基本功，以后上手其他语言，就会容易很多。</p>
+<p>还有一类是计算机基础和总体知识的课程，比如操作系统、编译原理、计算机网络等等，它们会教给你宏观的计算机知识，让你了解计算机是如何运作的。</p>
+<p>对于以上两类课程，我的建议是除了认真听课、完成作业，课后也多查阅资料，多练习，多实践。</p>
+<p><strong>（2）自我学习</strong></p>
+<ul>
+<li><p>技术书籍的选择<br>要选择“著”而不是“编著”，“著”的书往往包含了作者自身长年积累的经验和知识、见解。而“编著”往往只是简单的知识的整理收集，缺乏对知识的梳理、讲解。国外的书往往质量更高，能直接阅读英文原文著作当然是做好的，翻译的作品也是不错的。</p>
+</li>
+<li><p>在线编程学习网站</p>
+<ol>
+<li>网上有各类论坛、博客包含信息，不时逛逛，收获良多。</li>
+<li><a href="http://www.codecademy.com/" target="_blank" rel="noopener">Codecademy</a> 强力推荐的一个交互式编程学习网站，它以练习实践的方式，进行编程教学。</li>
+</ol>
+</li>
+<li><p>在线课程<br>如今的在线课程开放平台十分活跃，能给我们提供的课程也十分多，质量也很不错。</p>
+<ol>
+<li><a href="https://www.coursera.org" target="_blank" rel="noopener">Coursera</a> 由美国斯坦福大学两名计算机科学教授创办。旨在同世界顶尖大学合作，在线提供免费的网络公开课程。</li>
+<li><a href="https://www.edx.org" target="_blank" rel="noopener">edX</a> 麻省理工和哈佛大学于2012年4月联手创建的大规模开放在线课堂平台。</li>
+<li><a href="http://udacity.com" target="_blank" rel="noopener">Udacity</a> 大量优质的计算机相关课程。</li>
+<li><a href="http://www.xuetangx.com" target="_blank" rel="noopener">学堂在线</a> 由清华大学研发出的网络开放课程平台。</li>
+<li><a href="https://www.khanacademy.org" target="_blank" rel="noopener">Khan Academy</a> 可汗学院，有关于数学、历史、金融、物理、化学、生物、天文学等科目的内容。</li>
+<li><a href="http://www.imooc.com/" target="_blank" rel="noopener">imooc</a>  国内一个IT课程平台，多为一些IT圈内大牛主讲的课程，质量很不错，授课内容十分实用。</li>
+<li><a href="http://study.163.com" target="_blank" rel="noopener">网易云课堂</a> 多为技能类课程，种类多。</li>
+<li><a href="http://open.163.com" target="_blank" rel="noopener">网易公开课</a> 各类公开课。</li>
+</ol>
+</li>
+</ul>
+<p>还有很多在线课程能够很好地帮助我们自学。</p>
+<ul>
+<li>问答社区</li>
+</ul>
+<p>在自学的过程中，经常会遇到各种各样的问题，一般可以去百度、谷歌等搜索引擎进行搜索，也可以去IT类的问答社区。比如著名的<a href="http://stackoverflow.com/" target="_blank" rel="noopener">stackoverflow</a>，上面的答案可信度非常高；还有国内的<a href="http://segmentfault.com/" target="_blank" rel="noopener">segmentfault</a> 等等。</p>
+<ul>
+<li>英语</li>
+</ul>
+<p>从我上面推荐的资料看来，很多资料都是英文的，这就需要英语的能力。英语能力或许计算机从业者们是除了专业技能之外最重要的技能了。因为最新的技术往往来自于大洋彼岸说着英语的国家，一手的资料往往都是英文的。而且英语是全世界的开发者的通用语言，和其他开发者交流心得体会也需要英语。总之，学好英语有百利而无一害。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/51201-1860c63c08df731a.jpg" alt></p>
+<h2 id="4-关于工作"><a href="#4-关于工作" class="headerlink" title="4.关于工作"></a>4.关于工作</h2><p><strong>（1）选方向</strong></p>
+<p>计算机类的技术工作分为好多方向比如Java、C++、Android、iOS、前端、数据库、数据挖掘等等。确定好自己的方向，沿着某一个方向前进是明智之举。同时可以关注各个公司招聘的职位发布，找到自己的心仪职位并且按照职位的要求来学习。</p>
+<p><strong>（2）boss们真正需要的是什么？</strong></p>
+<p>作为一名初出茅庐的大学生，老板们当然不认为你有“两年以上工作经验”、或是“熟练掌握XXX框架、XXX技术”，他们知道你很多东西都没有接触过，他们往往需要两点，态度和学习能力。态度不用多说，学习能力即学习掌握新事物的能力，就是你多久能融入工作团队，面对新的任务能否及时完成。要培养学习能力，最好的方法就是在平时多看多学新技术，技术之间都是有同性的，接触的多了，自然有了套路，知道该如何下手。</p>
+<p>最后，请记住我们伟大的梦想：<br>Write the code. Change the world.</p>
+<p>mixj93<br>2015年5月</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是一篇旧文，写于两年前毕业之际，最初发布在&lt;a href=&quot;http://www.jianshu.com/p/0dff5466217e&quot; title=&quot;简书链接&amp;quot; target=&amp;quot;_blank&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;简书&lt;/a&gt;上，最近发现依然能给计算机、互联网初学者带来帮助。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>30分钟学 TypeScript</title>
+    <link href="http://lixueli.com/2016/08/20/learn-typeScript-in-30-minutes/"/>
+    <id>http://lixueli.com/2016/08/20/learn-typeScript-in-30-minutes/</id>
+    <published>2016-08-20T14:39:13.000Z</published>
+    <updated>2021-05-06T20:46:40.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>TypeScript 极简入门。</p>
+<a id="more"></a>
+<p><img src="http://cdn.tutorialzine.com/wp-content/uploads/2016/07/learn-typescript-in-30.png" alt></p>
+<p><a href="http://tutorialzine.com/2016/07/learn-typescript-in-30-minutes/" target="_blank" rel="noopener">原创翻译，英文原文地址</a></p>
+<h1 id="30分钟学-TypeScript"><a href="#30分钟学-TypeScript" class="headerlink" title="30分钟学 TypeScript"></a>30分钟学 TypeScript</h1><p>今天我们要来看看 TypeScript，一个为构建复杂的大型的应用而设计的需要编译成 JavaScript 的语言。它继承了诸多语言比如 C#、Java 的理念，并且在动态类型的 JavaScript 中加入了更多的约束。</p>
+<p>这篇教程针对那些能够相对熟练的使用 JavaScript 但是没怎么用过 TypeScript 的人们。教程包含了 TypeScript 最基础和关键的特性并且配合许多带有注释的例子帮助大家理解这门语言。让我们开始吧！</p>
+<h2 id="使用-TypeScript-的好处"><a href="#使用-TypeScript-的好处" class="headerlink" title="使用 TypeScript 的好处"></a>使用 TypeScript 的好处</h2><p>JavaScript 是一门很不错的语言，以至于很多人会想是否真的有必要去学习 TypeScript。技术上，成为一个优秀的开发者不必要使用 TypeScript，很多用不使用它也做得很好。但是，使用 TypeScript 必定会带来一些好处：</p>
+<ul>
+<li>得益于静态类型，使用 TypeScript 写的代码有更多的可预测性，调试起来也更加方便。</li>
+<li>感谢模块、命名空间和强大的面向对象支持，让组织大型复杂的应用代码更加方便。</li>
+<li>TypeScript 编译成 JavaScript 时会捕获错误，这样在运行时就不会打断。</li>
+<li>即将到来的 Angular 2 框架使用 TypeScript 写的，并且推荐使用 TypeScript。</li>
+</ul>
+<p>推荐使用 TypeScript 的最后一点也是主要理由是 Angular 2 是当下最火的框架之一，尽管她可以使用普通的 JavaScript 编写，但是大量的教程和例子用的都是 TypeScript，所以越来越多的人会使用 TypeScript。</p>
+<h2 id="安装-TypeScript"><a href="#安装-TypeScript" class="headerlink" title="安装 TypeScript"></a>安装 TypeScript</h2><blockquote>
+<p>需要先安装 Node.js 和 NPM。如果还没有安装它们，请看<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" rel="noopener">这里</a>。</p>
+</blockquote>
+<p>最简单的安装 TypeScript 的方式是使用 <a href="https://www.npmjs.com/" target="_blank" rel="noopener">NPM</a> 。使用下面的命令，我们可以全局的安装 TypeScript 包，让 TS 编译器在所有项目中都可以使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+<p>打开命令行，在任意地方试着运行 tsc -v 查看有没有正确安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsc -v</span><br><span class="line">Version 1.8.10</span><br></pre></td></tr></table></figure>
+<h2 id="编辑器的-TypeScript-支持"><a href="#编辑器的-TypeScript-支持" class="headerlink" title="编辑器的 TypeScript 支持"></a>编辑器的 TypeScript 支持</h2><p>TypeScript 是一个开源项目，但是是由微软开发和维护的，所以它在微软的 Visual Studio 平台被原生支持。现在，越来越多的编辑器原生支持或通过插件支持 TypeScript 语法，自动完成提示，错误捕捉甚至是内置编译。</p>
+<ul>
+<li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> - 微软的一款轻量级开源代码编辑器，内置 TypeScript 支持。</li>
+<li><a href="https://github.com/Microsoft/TypeScript-Sublime-Plugin" target="_blank" rel="noopener">官方的 Sublime Text 插件</a>。</li>
+<li>最新版的 <a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="noopener">WebStorm</a> 内置对 TypeScript 的支持。</li>
+<li><a href="https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support" target="_blank" rel="noopener">更多支持</a> 包括 Vim、Atom、Emacs 以及其他。</li>
+</ul>
+<h2 id="编译成-JavaScript"><a href="#编译成-JavaScript" class="headerlink" title="编译成 JavaScript"></a>编译成 JavaScript</h2><p>TypeScript 代码写在 .ts 文件中（JSX是 .tsx 文件），不能直接在浏览器中运行，需要编译成普通的 JavaScript 文件。编译过程可以以以下几种方式进行：</p>
+<ul>
+<li>在命令行中使用前面说的命令行工具 <code>tsc</code>。</li>
+<li>直接用 Visual Studio 或者其他的一些 IDEs 和代码编辑器。</li>
+<li>使用自动化构建工具如 <a href="http://gulpjs.com/" target="_blank" rel="noopener">gulp</a>。</li>
+<li>我们发现第一种方式是最简单、对新手最友好的，所以在这篇教程中我们将使用第一种方式。</li>
+</ul>
+<p>在下面的命令中一个名为 <em>main.ts</em> 的 TypeScript 文件被编译成了 JavaScript 文件 <em>main.js</em>。如果 <em>main.js</em> 已经存在将会被覆盖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc main.ts</span><br></pre></td></tr></table></figure>
+<p>我们可以一次编译多个文件使用通配符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Will result in separate .js files: main.js worker.js.</span></span><br><span class="line">tsc main.ts worker.ts    </span><br><span class="line"></span><br><span class="line"><span class="comment"># Compiles all .ts files in the current folder. Does NOT work recursively.</span></span><br><span class="line">tsc *.ts</span><br></pre></td></tr></table></figure>
+<p>我们可以使用 <code>--watch</code> 选项自动编译当 TypeScript 文件有改变时:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Initializes a watcher process that will keep main.js up to date.</span></span><br><span class="line">tsc main.ts --watch</span><br></pre></td></tr></table></figure>
+<p>更多的高级 TypeScript 用户会创建 tsconfig.json 文件，包含了许多的编译设置。配置文件在构架大型项时十分有用，当 .ts 文件很多时，能够自动化程序。在 TypeScript 文档中可以读到<a href="http://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="noopener">更多关于 tsconfig.json 的信息</a>。</p>
+<h2 id="静态类型"><a href="#静态类型" class="headerlink" title="静态类型"></a>静态类型</h2><p> TypeScript  最大的特点就是支持静态类型。这意味着你可以声明变量的类型，编译器会确保变量没有被赋予错误的类型。如果类型声明被省略，类型会通过代码自动推测出来。</p>
+<p> 这里有一个例子。任何变量、函数参数以及返回值可以在初始化的时候定义类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> burger: <span class="built_in">string</span> = <span class="string">'hamburger'</span>,     <span class="comment">// String </span></span><br><span class="line">    calories: <span class="built_in">number</span> = <span class="number">300</span>,           <span class="comment">// Numeric</span></span><br><span class="line">    tasty: <span class="built_in">boolean</span> = <span class="literal">true</span>;            <span class="comment">// Boolean</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Alternatively, you can omit the type declaration:</span></span><br><span class="line"><span class="comment">// var burger = 'hamburger';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// The function expects a string and an integer.</span></span><br><span class="line"><span class="comment">// It doesn't return anything so the type of the function itself is void.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">food: <span class="built_in">string</span>, energy: <span class="built_in">number</span></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Our "</span> + food + <span class="string">" has "</span> + energy + <span class="string">" calories."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speak(burger, calories);</span><br></pre></td></tr></table></figure>
+<p>因为  TypeScript 会被编译成 JavaScript，JavaScript 并不理解类型的概念，在 JavaScript 中类型会被完全移除：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript code from the above TS example.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> burger = <span class="string">'hamburger'</span>,</span><br><span class="line">    calories = <span class="number">300</span>, </span><br><span class="line">    tasty = <span class="literal">true</span>; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">food, energy</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Our "</span> + food + <span class="string">" has "</span> + energy + <span class="string">" calories."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speak(burger, calories);</span><br></pre></td></tr></table></figure>
+<p>但是如果我们想做一些非法的操作，那么在编译的时候会显示错误。比如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The given type is boolean, the provided value is a string.</span></span><br><span class="line"><span class="keyword">var</span> tasty: <span class="built_in">boolean</span> = <span class="string">"I haven't tried it yet"</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main.ts(1,5): error TS2322: Type <span class="string">'string'</span> is not assignable to <span class="built_in">type</span> <span class="string">'boolean'</span>.</span><br></pre></td></tr></table></figure>
+<p>如果我们向函数传入错误的参数，也会显示错误：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">food: <span class="built_in">string</span>, energy: <span class="built_in">number</span></span>): <span class="title">void</span></span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Our "</span> + food + <span class="string">" has "</span> + energy + <span class="string">" calories."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Arguments don't match the function parameters.</span></span><br><span class="line">speak(<span class="string">"tripple cheesburger"</span>, <span class="string">"a ton of"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main.ts(5,30): error TS2345: Argument of <span class="built_in">type</span> <span class="string">'string'</span> is not assignable to parameter of <span class="built_in">type</span> <span class="string">'number'</span>.</span><br></pre></td></tr></table></figure>
+<p>下面列出了常用的类型：</p>
+<ul>
+<li>数字 – All numeric values are represented by the number type, there aren’t separate definitions for integers, floats or others.</li>
+<li>字符串 – 就像普通的 JavaScript 中使用 ‘单引号’ 或者 “双引号” 包裹的字符串。</li>
+<li>布尔值 – <code>true</code> 或者 <code>false</code>, 使用 0 和 1 会引起编译错误。</li>
+<li>任意 – 变量的类型可以是任意一种类型。</li>
+<li>数组 – 两种语法： <code>my_arr: number[]</code> 或者 <code>my_arr: Array&lt;number&gt;</code>。</li>
+<li>空 – 返回没有返回数。</li>
+</ul>
+<p>完整的类型列表请参阅 TypeScript 文档 – <a href="http://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" rel="noopener">这里</a>.</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口用于检查一个对象是否符合一个特定的结构。通过定义一个接口，我们可以命名一个特定的变量的集合，确保这些变量一直会在一起。当编译成 JavaScript 的时候，接口会消失 - 它们的主要在开发阶段带来帮助。</p>
+<p>在下面的例子中我们会定义一个简单的接口来检查函数参数的类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Here we define our Food interface, its properties, and their types.</span></span><br><span class="line"><span class="keyword">interface</span> Food &#123;</span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    calories: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// We tell our function to expect an object that fulfills the Food interface. </span></span><br><span class="line"><span class="comment">// This way we know that the properties we need will always be available.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">food: Food</span>): <span class="title">void</span></span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Our "</span> + food.name + <span class="string">" has "</span> + food.calories + <span class="string">" calories."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// We define an object that has all of the properties the Food interface expects.</span></span><br><span class="line"><span class="comment">// Notice that types will be inferred automatically.</span></span><br><span class="line"><span class="keyword">var</span> ice_cream = &#123;</span><br><span class="line">  name: <span class="string">"ice cream"</span>, </span><br><span class="line">  calories: <span class="number">200</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speak(ice_cream);</span><br></pre></td></tr></table></figure>
+<p>属性的顺序无关紧要。我们只需要将属性都展现出来并且类型正确。如果缺少了什么、类型错误或是命名不同，编译器都会告诉我们错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface Food &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    calories: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params">food: Food</span>): <span class="title">void</span></span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Our "</span> + food.name + <span class="string">" has "</span> + food.calories + <span class="string">" grams."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// We've made a deliberate mistake and name is misspelled as nmae.</span></span><br><span class="line"><span class="keyword">var</span> ice_cream = &#123;</span><br><span class="line">  nmae: <span class="string">"ice cream"</span>, </span><br><span class="line">  calories: <span class="number">200</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">speak(ice_cream);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main.ts(16,7): error TS2345: Argument of <span class="built_in">type</span> <span class="string">'&#123; nmae: string; calories: number; &#125; </span></span><br><span class="line"><span class="string">is not assignable to parameter of type '</span>Food<span class="string">'. </span></span><br><span class="line"><span class="string">Property '</span>name<span class="string">' is missing in type '</span>&#123; nmae: string; calories: number; &#125;<span class="string">'.</span></span><br></pre></td></tr></table></figure>
+<p>这里是入门指南，我们不会深入接口的更多细节。但是关于接口还有很多在这里没有提到的，所以建议去看看 TypeScript 的文档 – <a href="http://www.typescriptlang.org/docs/handbook/interfaces.html" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>当我们构建大型应用的时候，很多开发者会选择面向对象编程，尤其是像 Java 或是 C#。 TypeScript 提供了与之类似的类系统，包括了继承、抽象类、接口实现、set、get 方法以及其他。</p>
+<p>还需要提到的是，自从 JavaScript 最近的升级（ECMAScript 2015），原生的 JavaScript 开始支持类，不通过 TypeScript 也可以使用。这两种实现非常相似，但是它们有缩不同， TypeScript 更加严格。</p>
+<p>延续食物的主题，下面是一个简单的 TypeScript 的例子：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Menu &#123;</span><br><span class="line">  <span class="comment">// Our properties:</span></span><br><span class="line">  <span class="comment">// By default they are public, but can also be private or protected.</span></span><br><span class="line">  items: <span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt;;  <span class="comment">// The items in the menu, an array of strings.</span></span><br><span class="line">  pages: <span class="built_in">number</span>;         <span class="comment">// How many pages will the menu be, a number.</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// A straightforward constructor. </span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">item_list: <span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt;, total_pages: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="comment">// The this keyword is mandatory.</span></span><br><span class="line">    <span class="keyword">this</span>.items = item_list;    </span><br><span class="line">    <span class="keyword">this</span>.pages = total_pages;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Methods</span></span><br><span class="line">  list(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Our menu for today:"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.items.length; i++) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.items[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a new instance of the Menu class.</span></span><br><span class="line"><span class="keyword">var</span> sundayMenu = <span class="keyword">new</span> Menu([<span class="string">"pancakes"</span>,<span class="string">"waffles"</span>,<span class="string">"orange juice"</span>], <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call the list method.</span></span><br><span class="line">sundayMenu.list();</span><br></pre></td></tr></table></figure>
+<p>任何写过一些 Java 或是 C# 应该感觉这些语法很熟悉，继承也类似：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> HappyMeal <span class="keyword">extends</span> Menu &#123;</span><br><span class="line">  <span class="comment">// Properties are inherited</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// A new constructor has to be defined.</span></span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">item_list: <span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt;, total_pages: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="comment">// In this case we want the exact same constructor as the parent class (Menu), </span></span><br><span class="line">    <span class="comment">// To automatically copy it we can call super() - a reference to the parent's constructor.</span></span><br><span class="line">    <span class="keyword">super</span>(item_list, total_pages);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Just like the properties, methods are inherited from the parent.</span></span><br><span class="line">  <span class="comment">// However, we want to override the list() function so we redefine it.</span></span><br><span class="line">  list(): <span class="built_in">void</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Our special menu for children:"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.items.length; i++) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.items[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a new instance of the HappyMeal class.</span></span><br><span class="line"><span class="keyword">var</span> menu_for_children = <span class="keyword">new</span> HappyMeal([<span class="string">"candy"</span>,<span class="string">"drink"</span>,<span class="string">"toy"</span>], <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// This time the log message will begin with the special introduction.</span></span><br><span class="line">menu_for_children.list();</span><br></pre></td></tr></table></figure>
+<p> TS 中类的更多信息请看文档 – <a href="http://www.typescriptlang.org/docs/handbook/classes.html" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型是模板，它允许一个函数接收不同类型的参数。使用泛型创建可重用的组件比 any 类型要好，当变量传入传出时，泛型会保留变量的类型。</p>
+<p>下面的例子一个接收一个参数并返回一个含有相同参数的数组。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The &lt;T&gt; after the function name symbolizes that it's a generic function.</span></span><br><span class="line"><span class="comment">// When we call the function, every instance of T will be replaced with the actual provided type.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Receives one argument of type T,</span></span><br><span class="line"><span class="comment">// Returns an array of type T.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">genericFunc</span>&lt;<span class="title">T</span>&gt;(<span class="params">argument: T</span>): <span class="title">T</span>[] </span>&#123;    </span><br><span class="line">  <span class="keyword">var</span> arrayOfT: T[] = [];    <span class="comment">// Create empty array of type T.</span></span><br><span class="line">  arrayOfT.push(argument);   <span class="comment">// Push, now arrayOfT = [argument].</span></span><br><span class="line">  <span class="keyword">return</span> arrayOfT;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arrayFromString = genericFunc&lt;<span class="built_in">string</span>&gt;(<span class="string">"beep"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arrayFromString[<span class="number">0</span>]);         <span class="comment">// "beep"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> arrayFromString[<span class="number">0</span>])   <span class="comment">// String</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arrayFromNumber = genericFunc(<span class="number">42</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arrayFromNumber[<span class="number">0</span>]);         <span class="comment">// 42</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> arrayFromNumber[<span class="number">0</span>])   <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
+<p>第一次调用函数的时候我们手动设置类型为字符串。这不需要编译器知道参数的类型会自动决定合适的类型，就像第二次调用。尽管不是强制的，每一个提供类型是最佳实践，因为编译器可能在复杂的场景中猜测类型时出现错误。</p>
+<p>TypeScript 文档包含许多泛型使用的高级用法，包括和接口的一起使用，可以在<a href="http://www.typescriptlang.org/docs/handbook/generics.html" target="_blank" rel="noopener">这里</a>看到。</p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>构建大型应用是另一个重要的理念是模块化。把代码分成许多小的可重用的模块可以帮助项目保持组织性和可理解性，比一个一万行的代码要好的多。</p>
+<p>TypeScript 介绍了一种导入导出模块的语法，但不用处理文件间的真正的依赖。为了拓展 TS 的模块化，需要依赖第三方库：客户端应用使用 <a href="http://requirejs.org/" target="_blank" rel="noopener">require.js</a>，而 Node.js使用 <a href="https://en.wikipedia.org/wiki/CommonJS" target="_blank" rel="noopener">CommonJS</a>。让我们来看看一个 TypeScript 使用 require.js 的简单例子：</p>
+<p>我们将有两个文件。一个导出一个函数，一个导入这个函数并使用它。</p>
+<p>exporter.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello!"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> = sayHi;</span><br></pre></td></tr></table></figure>
+<p>importer.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sayHi = <span class="built_in">require</span>(<span class="string">'./exporter'</span>);</span><br><span class="line">sayHi();</span><br></pre></td></tr></table></figure>
+<p>现在需要下载 require.js 并引入（<a href="http://requirejs.org/docs/start.html" target="_blank" rel="noopener">如何使用</a>）。最后一步是编译两个 .ts 文件。一个额外的参数告诉 TypeScript 使用的是 require.js（也被称作 AMD），与之像对应的是 CommonJS。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --module amd *.ts</span><br></pre></td></tr></table></figure>
+<p>Modules are quite complex and are out of the scope of this tutorial. If you want to continue reading about them head out to the TS docs – <a href="http://www.typescriptlang.org/docs/handbook/modules.html" target="_blank" rel="noopener">here</a>.</p>
+<p>模块相当的复杂超出了这篇教程的范围。如果你想要继续学习可以查看 TS 的文档 - <a href="http://www.typescriptlang.org/docs/handbook/modules.html" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="第三方声明文件"><a href="#第三方声明文件" class="headerlink" title="第三方声明文件"></a>第三方声明文件</h2><p>当我们使用原本为普通 JavaScript 文件设计的库时，我们需要使用一个声明文件使得库可以在 TypeScript 中使用。声明文件的扩展名是 .d.ts 包含库和 API 的多种信息。</p>
+<p>TypeScript 声明文件通常是自己写的，但有很高的可能已经有了 .d.ts 文件已经有其他人完成。 <a href="http://definitelytyped.org/" target="_blank" rel="noopener">DefinitelyTyped</a> 是最大的声明文件的公共仓库，包含超过一千个库。同时还有一个流行的 Node.js 模块去管理 TypeScript 定义：<a href="https://github.com/typings/typings" target="_blank" rel="noopener">Typings</a>。</p>
+<p>如果你需要自己编写定义文件，<a href="http://www.typescriptlang.org/docs/handbook/writing-declaration-files.html" target="_blank" rel="noopener">这篇指南</a>会给你帮助。</p>
+<h2 id="TypeScript-2-0-的新特性"><a href="#TypeScript-2-0-的新特性" class="headerlink" title="TypeScript 2.0 的新特性"></a>TypeScript 2.0 的新特性</h2><p>下面会介绍一些使用的新特性：</p>
+<ul>
+<li>Non-nullable 类型防止变量值为 null 或 undefined</li>
+<li>声明文件直接通过 NPM 安装</li>
+<li>控制流的分析帮助在编译之前发现错误</li>
+<li>模块导入导出的演进</li>
+</ul>
+<p>其他的特性包括在 async/await 中控制异步流，这将会在 2.1 中更新。</p>
+<h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h2><p>官方文档中的大量内容可能在一开始有点多，但是深入学习时会很有帮助。这篇教程可以作为入门介绍，所以没有包含 TS 的方方面面。这里是一些这篇教程跳过的有用的理念：</p>
+<ul>
+<li><a href="http://www.typescriptlang.org/docs/handbook/namespaces.html" target="_blank" rel="noopener">命名空间</a></li>
+<li><a href="http://www.typescriptlang.org/docs/handbook/enums.html" target="_blank" rel="noopener">枚举</a></li>
+<li><a href="http://www.typescriptlang.org/docs/handbook/advanced-types.html" target="_blank" rel="noopener">高级类型和类型指南</a></li>
+<li><a href="http://www.typescriptlang.org/docs/handbook/jsx.html" target="_blank" rel="noopener">使用 TypeScript 编写 JSX</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>希望你喜欢这篇教程</p>
+<p>现在你会考虑在项目中使用 TypeScript 了吗？</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;TypeScript 极简入门。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="开发" scheme="http://lixueli.com/tags/%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+</feed>
